@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from blog.models import Blog, BlogCategory
+from django.shortcuts import render,redirect
+from blog.models import Blog, BlogCategory, SubscriberEmail
 
 def blog_detail(request,slug):
     
@@ -12,3 +12,13 @@ def blog_detail(request,slug):
         
     }
     return render(request,'blog-detail.html',context)
+
+def subscriber_email(request):
+    if request.method == 'POST':
+        email = request.POST.get('user_email')
+        try: 
+            SubscriberEmail.objects.create(email=email)
+        except Exception as e:
+            pass
+        return redirect('index')
+        

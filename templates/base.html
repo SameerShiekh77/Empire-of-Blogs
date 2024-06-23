@@ -164,11 +164,14 @@
                             <p class=" footer-subscription">Get our Daily email newsletter with Special Services, Updates, Offers
                                 and more!
                             </p>
+                            <form action="{% url "subscriber-email" %}" method="POST"> {% csrf_token %}
                             <span class="input-span">
+
                                 <input type="email" class=" input-span" name="user_email" id="user_email2"
-                                    placeholder="Your Email Address">
-                                <div type="button" class="fas fa fa-arrow-right news-btn" onclick="newsLetter(window.location.href,'user_email2');"></div>
-                            </span>
+                                placeholder="Your Email Address">
+                                <input type="submit" value="Go" class="fas fa fa-arrow-right  news-btn w-100"></input>
+                              </span>
+                            </form>
                         </span>
                         <br>
                        
