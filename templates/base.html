@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta name="google-site-verification" content="ZjNRGMh2oiFry9EekUqGZkd5ECIAmKiq8c8NtGmVRzA" />
+    <meta name="robots" content="index" />
+    <!-- Site Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Check out the latest blogs, tips, DIY & hack and new ideas from empireofblogs.">
+    <title>Empire of Blogs</title>
+    <meta name="keywords" content="empireofblogs"/>
+    <meta name="description" content="At empireofblogs: everything you need in one spot. Upgrade your knowledge with our beauty tips, DIY & lifestyle guides, Wellness, Entertainment, online education, shopping ideas, & Money Saving Tips. "/>
+    <meta property="og:title" content="Check out the latest blogs, tips, DIY & hack and new ideas from empireofblogs." />
+    <meta property="og:description" content="At empireofblogs: everything you need in one spot. Upgrade your knowledge with our beauty tips, DIY & lifestyle guides, Wellness, Entertainment, online education, shopping ideas, & Money Saving Tips. " /> 
+    <meta property="og:locale" content="en_US" /> 
+    <meta property="og:type" content="website" /> 
+    <meta property="og:image" content="{% static 'images/logo-white.png' %}"/>
+    <meta property="og:image:alt" content="empireofblogs" />
+    <meta property="og:url" content="index.html" />
+
+    <meta name="twitter:card" content="summary" /> 
+    <meta name="twitter:title" content="Check out the latest blogs, tips, DIY & hack and new ideas from empireofblogs."> 
+    <meta name="twitter:description" content="At empireofblogs: everything you need in one spot. Upgrade your knowledge with our beauty tips, DIY & lifestyle guides, Wellness, Entertainment, online education, shopping ideas, & Money Saving Tips. " /> 
+    <meta name="twitter:image:src" content="{% static 'images/logo-white.png' %}"> 
+    <meta name="twitter:site" content="@empireofblogs"> 
+    <meta name="twitter:creator" content="@empireofblogs">
+    
+    <link rel="canonical" href="index.html">
+   
+   <link rel="icon"  href="{% static 'images/icon.png' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'web-asset/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'web-asset/css/style.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'web-asset/css/navbar-top-fixed.css' %}">
+   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'web-asset/js/bootstrap.min.js'%}"></script>
+</head>
+
+<body onclick="hidesearch()">
+
+  <div id="content">
+  	  <div class="t-main">
+
+                      <header>
+                <nav class="navbar navbar">
+    <div class="container">
+        <div class="row">
+          <div class="navbar-header col-md-12 col-xs-12">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="slide-collapse" data-target="#slide-navbar-collapse" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-12 logo-div">
+                        <nav>
+            <div class="blog-nav"> 
+              
+              <a href="{% url "index" %}" class="title2">Home</a>
+              <a href="blog/category/travel.html" class="title2">Travel</a>
+              <a href="blog/category/lifestyle.html" class="title2">Lifestyle</a>
+              <a href="blog/category/health-and-beauty.html" class="title2">Health and Beauty</a>
+              <a href="blog/category/fitness-and-sports.html" class="title2">Fitness and Sports</a>
+              <a href="blog/category/home-and-tech.html" class="title2">Home and Tech</a>
+                    
+            </div>
+           </nav> 
+
+                  </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 search_div">
+                                  <div class="search">
+                <input class="form-control my-input" placeholder="Type here to search" onkeyup="search(this.value)" style="border: 1px solid #eee;">
+                <button aria-label="Search" type="submit"><i class="fa fa-search"></i></button>
+                    <div id="search_response" class="">
+                    <ul class="typeahead dropdown-menu"  id="search_result">
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="slide-navbar-collapse">
+      
+       
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <div class="t-landingCTA-0-2-72">
+             <div>
+                <div class="t-buttonWrap-0-2-115">
+    
+                  <ul class='modifiednav_mobile'>
+                    <li><a href="{% url "index" %}">Home</a></li>
+                    <li><a href="blog/category/travel.html">Travel</a></li>
+                    <li><a href="blog/category/lifestyle.html">Lifestyle</a></li>
+                    <li><a href="blog/category/health-and-beauty.html">Health and Beauty</a></li>
+                    <li><a href="blog/category/fitness-and-sports.html">Fitness and Sports</a></li>
+                    <li><a href="blog/category/home-and-tech.html">Home and Tech</a></li>
+                  </ul>
+                 </div>
+             </div>    
+          </div>
+        </li>
+   
+        </ul>
+      </div>
+      
+    </div>
+  </nav>
+  <div class="menu-overlay"></div>
+</header>
+<nav>
+ <div class="logo-div"> 
+      <a href="{% url "index" %}" alt="logo" aria-label="logo"><img src="{% static 'images/logo-white.png' %}" class="nav-img img-responsive" alt=""></a>
+ </div>
+</nav> 
+
+  {% block body %}
+     
+  
+  {% endblock body %}
+
+     
+
+<div class="gtranslate_wrapper"></div>
+
+
+<footer class="site-footer">
+      <div class="container">
+        <div class="row">
+ 
+
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="col-md-12 footer_logo_div">
+                <span style="display:flex; justify-content:center;">
+                         <a class="" href="index.html" aria-label="logo">
+                       <img style="width: 120px; max-width:250px;" src="{% static 'images/logo-footer.png' %}" class="img-responsive" alt=""></a>
+                </span>
+           
+          
+                <p class="footer-p">Empire of Blogs has a vision to introduce high distinguished brand stores where you can find everything that you ever dreamed of, now you don’t need to worry about your shopping because we make your purchasing facile and affordable. Our vision is to enable millions of customers around the globe to easily find out the treasured and favorite products in reasonable prices.</p>
+            </div>
+          </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+              <h3 class="text-center">Useful Links</h3>
+            <ul class="footer-links">
+                <li><a href="coupons/index.html">Coupons</a></li>
+              <li><a href="coupons/about.html">About Us</a></li>
+              <li><a href="coupons/terms.html">Terms &amp; Conditions</a></li>
+              <li><a href="coupons/privacy.html">Privacy Policy</a></li>  
+                <li><a href="coupons/terms_of_use.html">Terms Of Use</a></li>  
+                  <li><a href="coupons/impressum.html">Impressum</a></li> 
+                
+            </ul>
+          </div>
+       
+                      <div class="col-md-4 col-sm-4 col-xs-12">
+                        <span class=" footer-widget">
+                            <h4 class="link-head">News Letter</h4>
+                           
+                            <p class=" footer-subscription">Get our Daily email newsletter with Special Services, Updates, Offers
+                                and more!
+                            </p>
+                            <span class="input-span">
+                                <input type="email" class=" input-span" name="user_email" id="user_email2"
+                                    placeholder="Your Email Address">
+                                <div type="button" class="fas fa fa-arrow-right news-btn" onclick="newsLetter(window.location.href,'user_email2');"></div>
+                            </span>
+                        </span>
+                        <br>
+                       
+            <ul class="social-icons">
+              <li><a class="facebook" href="#" aria-label="facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="dribbble" href="#" aria-label="instagram"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+                        
+</div>
+  
+          
+
+        </div>
+        <hr>
+      </div>
+      
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                	 		 <p class="disclosure">
+            		Disclosure: We may earn commission if you use our links/Coupons/Voucher/Promos
+            		 </p>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                	 		 <p class="copyright">
+            			 copyright © 2024 empireofblogs, All Right Reserved
+            		 </p>
+            </div>
+
+        </div>
+      </div>
+</footer>
+
+           
+                                
+                    
+
+</body>
+
+<script type="text/javascript">
+$('[data-toggle="slide-collapse"]').on('click', function() {
+  $navMenuCont = $($(this).data('target'));
+  $navMenuCont.animate({
+    'width': 'toggle'
+  }, 350);
+  $(".menu-overlay").fadeIn(500);
+
+});
+$(".menu-overlay").click(function(event) {
+  $(".navbar-toggle").trigger("click");
+  $(".menu-overlay").fadeOut(500);
+});
+
+</script>
+
+  <script src="{% static 'js/site.js' %}"></script>
+   <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+</html>

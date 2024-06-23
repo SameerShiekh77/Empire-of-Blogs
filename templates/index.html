@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<main>
+
+<div class="blog-main">
+   <div>
+      <div class="blog-1">
+      
+
+{% for blog in blogs %}
+<div class="blog-2">
+<div>
+   <a href="{% url "blog-detail" blog.slug %}" aria-label="blog">
+     <picture><img src="{{blog.image.url}}" class="c0148 tall" alt="{{blog.title}}"></picture>
+   </a>
+</div>
+
+
+<div class="c0169">
+    <div class="blo-2">
+        <div class="nav-org2"></div>
+
+          <a href="{% url "blog-detail" blog.slug %}" aria-label="blog-2"><div class="life title0">{{blog.blog_category}}</div></a>
+          <div class="dist-3"></div>
+           <a aria-label="body2"><div class="c0167 body2 text-capitalize">By {{blog.author}}</div></a>
+    </div>
+</div>
+
+ <a href="{% url "blog-detail" blog.slug %}" class="title-blo title5 text-capitalize">{{blog.title}}</a>
+</div> 
+
+
+
+{% endfor %}                      
+
+
+
+      
+
+
+
+        </div>
+  </div>
+
+</div>
+    </main>
+</div>
+
+
+</div>
+
+{% endblock body %}

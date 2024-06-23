@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+           
+
+           <main>
+
+              <div class="blog-iner">
+                  <div class="c0196">
+                  <div>
+                   <div class="iner-img">
+                      <picture><img src="{{blog.image.url}}"  class="blogin-2"></picture>
+                   </div>
+                   <div class="outer-blog">
+                      <h1 class="titl h1">{{blog.title}}</h1>
+                      <div class="out-date"><p>{{blog.author}}</p>&nbsp; <span class="ou-sp">|</span>&nbsp; {{blog.created_at}}</div>
+                      
+                      <div class="social media"></div>
+
+                      <div class="out-para">
+                       {{blog.description | safe}}
+
+
+                        
+                      </div>
+                   </div>
+                 </div>
+                 </div>
+                </div>
+            
+
+           </main>
+</div>
+{% endblock body %}
