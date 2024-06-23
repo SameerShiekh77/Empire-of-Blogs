@@ -62,12 +62,11 @@
             <div class="blog-nav"> 
               
               <a href="{% url "index" %}" class="title2">Home</a>
-              <a href="blog/category/travel.html" class="title2">Travel</a>
-              <a href="blog/category/lifestyle.html" class="title2">Lifestyle</a>
-              <a href="blog/category/health-and-beauty.html" class="title2">Health and Beauty</a>
-              <a href="blog/category/fitness-and-sports.html" class="title2">Fitness and Sports</a>
-              <a href="blog/category/home-and-tech.html" class="title2">Home and Tech</a>
-                    
+              {% for nav in navigation %}
+              <a href="blog/category/travel.html"  class="title2">{{nav.name}}</a>
+              {% endfor %}
+
+             
             </div>
            </nav> 
 
@@ -96,11 +95,10 @@
     
                   <ul class='modifiednav_mobile'>
                     <li><a href="{% url "index" %}">Home</a></li>
-                    <li><a href="blog/category/travel.html">Travel</a></li>
-                    <li><a href="blog/category/lifestyle.html">Lifestyle</a></li>
-                    <li><a href="blog/category/health-and-beauty.html">Health and Beauty</a></li>
-                    <li><a href="blog/category/fitness-and-sports.html">Fitness and Sports</a></li>
-                    <li><a href="blog/category/home-and-tech.html">Home and Tech</a></li>
+                    {% for nav in navigation %}
+                      <li><a href="blog/category/lifestyle.html">{{nav.name}}</a></li>
+                    {% endfor %}
+
                   </ul>
                  </div>
              </div>    
@@ -150,10 +148,10 @@
               <h3 class="text-center">Useful Links</h3>
             <ul class="footer-links">
                 <li><a href="coupons/index.html">Coupons</a></li>
-              <li><a href="coupons/about.html">About Us</a></li>
-              <li><a href="coupons/terms.html">Terms &amp; Conditions</a></li>
-              <li><a href="coupons/privacy.html">Privacy Policy</a></li>  
-                <li><a href="coupons/terms_of_use.html">Terms Of Use</a></li>  
+              <li><a href="{% url "about-us" %}">About Us</a></li>
+              <li><a href="{% url "terms-and-conditions" %}">Terms &amp; Conditions</a></li>
+              <li><a href="{% url "privacy-policy" %}">Privacy Policy</a></li>  
+                <li><a href="{% url "terms-of-use" %}">Terms Of Use</a></li>  
                   <li><a href="coupons/impressum.html">Impressum</a></li> 
                 
             </ul>
