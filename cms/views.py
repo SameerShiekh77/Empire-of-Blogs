@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from blog.models import Blog, BlogCategory, Contact
+from .models import Store
 # Create your views here.
 def index(request):
     blogs = Blog.objects.all()
@@ -58,3 +59,11 @@ def contact_form_submit(request):
         contact.save()
 
         return redirect('impressum')
+def stores(request):
+    stores = Store.objects.all()
+    navigation = BlogCategory.objects.all()[:5]
+    context = {
+        'stores':stores,
+        'navigation':navigation
+    }
+    return render(request,'stores.html',context)

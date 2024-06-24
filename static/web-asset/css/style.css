@@ -4277,3 +4277,42 @@ display: inline-block;
 text-align: center;
 width: 100%; /* Ensures the span takes up the full width of its container */
 }
+.alpha-ord-coup
+{
+  background-color: #FFFFFF;
+  padding: 10px 14px 14px 0px;
+  margin-top: 20px
+}
+.alpha-ord-img
+{
+  text-align: center;
+  border:1px solid #DDDDDD;
+  padding: 15px 6px 15px 6px; 
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.alpha-ord-img:hover
+{
+  box-shadow: 0px 0px 3px 1px #DDDDDD ;
+}
+.alpha-ord-coup
+{
+  background-color: #FFFFFF;
+  padding: 10px 14px 14px 0px;
+  margin-top: 20px
+}
+.alpha-ord-img
+{
+  text-align: center;
+  border:1px solid #DDDDDD;
+  padding: 15px 6px 15px 6px; 
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.alpha-ord-img:hover
+{
+  box-shadow: 0px 0px 3px 1px #DDDDDD ;
+}
+.alpha-ord-start{
+    color: white;
+}
