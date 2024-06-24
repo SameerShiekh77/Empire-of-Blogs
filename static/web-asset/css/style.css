@@ -4195,3 +4195,85 @@ position:relative;
   transform: translateY(0%);
   transition-delay: 1000ms;
 }
+.text-center{
+    text-align:center;
+}
+           
+.impressum_form{
+    display: flex;
+    flex-direction: column;
+    /*gap: 20px;*/
+    /* margin-bottom: 30px; */
+}   
+
+.impressum_input{
+    margin-bottom: 30px !important;
+    height: 50px !important;
+        border: 1px solid #ccc !important;
+}
+
+  @media(max-width:767px){
+    .impressum_form  .impressum_dscription{
+              width: 100% !important;
+    }
+  }
+ .impressum_send-btn > .btn-default{
+    display: flex !important;
+    justify-content: center !important;
+    background-color: #000 !important;
+    color: #fff;
+    padding: 10px 50px;
+    border: none;
+  }
+  .impressum_send-btn{
+    display: flex;
+    justify-content: center;
+    /*margin-top: 20px;*/
+    border-radius: 10px;
+  }
+  .impressum_dscription{
+    /*margin-bottom: 30px;*/
+    height: 120px;
+  }
+  .btn-default:hover{
+    color: #fff !important;
+  }
+  .form-control:focus{
+    box-shadow:  none !important;
+  }
+  .btn-default:focus{
+    box-shadow:  none !important;
+    outline: none !important;
+  }
+  .location-icon{
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  
+.list-unstyled{
+  padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+}
+.location-icon li{
+  font-family: 'Merriweather', serif;
+    font-size: 14px;
+    color: #222222;
+}
+.location-icon-p{
+  margin: 10px;
+}  
+#impresum_btn{
+    margin-top: 10px;
+    /* bottom: 10px; */
+    margin-bottom: 20px;
+}
+ #impresum_btn:hover{
+       background-color:#000;
+       color:#fff;
+   } 
+.impressum_send-btn {
+display: inline-block;
+text-align: center;
+width: 100%; /* Ensures the span takes up the full width of its container */
+}

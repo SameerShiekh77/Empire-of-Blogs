@@ -286,3 +286,32 @@ function getCookie(name) {
     }
     return null;
 }
+var submitUrl = "{% url 'contact_form_submit' %}";
+
+$(document).ready(function() {
+    $('#contactForm').submit(function(e) {
+        e.preventDefault();
+
+        var formData = {
+            'user_name': $('#user_name').val(),
+            'user_email': $('#user_email').val(),
+            'user_subject': $('#user_subject').val(),
+            'user_message': $('#user_message').val(),
+            'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+        };
+
+        console.log(submitUrl)
+        $.ajax({
+            type: 'POST',
+            url: submitUrl,
+            data: formData,
+            success: function(data) {
+                alert('Form submitted successfully!');
+                $('#contactForm')[0].reset();
+            },
+            error: function(data) {
+                alert('Error submitting form.');
+            }
+        });
+    });
+});

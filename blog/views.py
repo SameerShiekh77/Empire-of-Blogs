@@ -21,4 +21,5 @@ def subscriber_email(request):
         except Exception as e:
             pass
         return redirect('index')
+
         

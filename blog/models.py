@@ -38,3 +38,17 @@ class SubscriberEmail(models.Model):
 
     def __str__(self):
         return self.email
+    
+class Contact(models.Model):
+    user_name = models.CharField(max_length=100)
+    user_email = models.EmailField()
+    user_subject = models.CharField(max_length=255)
+    user_message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user_email  # Or any other field you want to display
+
+    class Meta:
+        verbose_name = 'Contact Form Submission'
+        verbose_name_plural = 'Contact Form Submissions'

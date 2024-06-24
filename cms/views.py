@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from blog.models import Blog, BlogCategory
+from django.shortcuts import render, redirect
+from blog.models import Blog, BlogCategory, Contact
 # Create your views here.
 def index(request):
     blogs = Blog.objects.all()
@@ -39,3 +39,22 @@ def privacy_policy(request):
         'navigation':navigation
     }
     return render(request,'privacy.html',context)
+def impressum_page(request):
+    return render(request,'impressum.html')
+def contact_form_submit(request):
+    if request.method == 'POST':
+        user_name = request.POST.get('user_name')
+        user_email = request.POST.get('user_email')
+        user_subject = request.POST.get('user_subject')
+        user_message = request.POST.get('user_message')
+        print("user_name,", user_email)
+        # Create and save the contact form submission
+        contact = Contact(
+            user_name=user_name,
+            user_email=user_email,
+            user_subject=user_subject,
+            user_message=user_message,
+        )
+        contact.save()
+
+        return redirect('impressum')

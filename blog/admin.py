@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Blog,SubscriberEmail,BlogCategory
+from blog.models import Blog,SubscriberEmail,BlogCategory,Contact
 from import_export.admin import ImportExportModelAdmin, ExportActionModelAdmin
 # Register your models here.
 
@@ -27,3 +27,8 @@ class BlogCategoryAdmin(ImportExportModelAdmin, ExportActionModelAdmin,admin.Mod
     
 
 admin.site.register(BlogCategory,BlogCategoryAdmin)
+class ContactAdmin(ImportExportModelAdmin, ExportActionModelAdmin, admin.ModelAdmin):
+    list_display = ('user_name','user_email','created_at')
+    search_fields = ('user_name','user_email')
+
+admin.site.register(Contact,ContactAdmin)
