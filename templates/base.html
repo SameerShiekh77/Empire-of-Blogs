@@ -63,6 +63,7 @@
               
               <a href="{% url "index" %}" class="title2">Home</a>
               <a href="{% url "stores" %}" class="title2">Store</a>
+              <a href="{% url "categories" %}" class="title2">Categories</a>
               {% for nav in navigation %}
               <a href="blog/category/travel.html"  class="title2">{{nav.name}}</a>
               {% endfor %}
@@ -97,6 +98,7 @@
                   <ul class='modifiednav_mobile'>
                     <li><a href="{% url "index" %}">Home</a></li>
                     <li><a href="{% url "stores" %}">Store</a></li>
+                    <a href="{% url "categories" %}" class="title2">Categories</a>
                     {% for nav in navigation %}
                       <li><a href="blog/category/lifestyle.html">{{nav.name}}</a></li>
                     {% endfor %}

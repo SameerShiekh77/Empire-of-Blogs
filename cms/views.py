@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from blog.models import Blog, BlogCategory, Contact
-from .models import Store
+from .models import Store,Category
 # Create your views here.
 def index(request):
     blogs = Blog.objects.all()
@@ -67,3 +67,12 @@ def stores(request):
         'navigation':navigation
     }
     return render(request,'stores.html',context)
+def show_categories(request):
+    categories = Category.objects.all()
+    navigation = BlogCategory.objects.all()[:5]
+    context = {
+        'categories':categories,
+        'navigation':navigation
+    }
+    print(categories)
+    return render(request,'categories.html',context)
