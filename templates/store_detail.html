@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-md-12">
+            <div class="col-md-10 col-sm-10 col-xs-12 single-coup-boxstyle">
+                <div class="single-coup-box">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <a href="{{ store.website_url }}">
+                            <img src="{{ store.image.url }}">
+                        </a>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="single-coup-right">
+                            <span>{{ store.store_name }}</span>
+                            <p>{{ store.description }}</p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row coup-start">
+            <div class="col-md-8 col-sm-8 col-xs-12 ">
+                <div class="feat-coupons col-md-12 col-sm-12 col-xs-12">
+                    <p class="h3 d-none_custum d-md-block_custum text-uppercase modal-title">
+                        <h1>{{ store.store_name }}</h1>
+                    </p>
+                    
+                    {% for coupon in coupons %}
+                        <div class="feat-coup-box col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-3 col-sm-3 col-xs-6 p-0">
+                                <a href="{{ coupon.coupon_url }}" aria-label="coupon">
+                                    <div class="coup-img">
+                                        <img class="img-responsive" src="{{ store.image.url }}" alt="" loading="lazy">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-8 p-0">
+                                <a onclick="updateCounter('{{ coupon.id }}', 1);" href="javascript:void(0)">
+                                    <div class="col-md-7 col-sm-7 col-xs-12 border">
+                                        <div class="coup-text">
+                                            <b>{{ coupon.description }}</b>
+                                            <p>{{ coupon.description }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <div class="avail">
+                                        <div class="get-code">
+                                            <div>
+                                                <a onclick="updateCounter('{{ coupon.id }}', 1);" href="{{ coupon.coupon_url }}" class="get-code-btn">Get Deal</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="poopular-categoreis">
+                    <div class="pop-cat-hd">
+                        <span>SIMILAR STORE</span>
+                    </div>
+                    {% for store in stores %}
+                        <a href="{% url 'store_detail' store.slug %}" class="pop-cat-anc">
+                            <div class="pop-cat-box"> 
+                                <img src="{{ store.image.url }}">
+                                <span>{{ store.store_name }}</span> 
+                            </div> 
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -315,3 +315,18 @@ $(document).ready(function() {
         });
     });
 });
+function updateCounter(id,used){
+    var ci = id ;
+    var upd_used = used ;
+    // Return Request
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange=function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("Successfull!");
+        }
+    };
+    
+  //Make Request 
+    xhttp.open("GET", url+"?coupId="+ci+"&coupUsed="+upd_used, true);
+    xhttp.send(); 
+} 

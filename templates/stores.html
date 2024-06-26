@@ -1,49 +1,51 @@
 {% extends 'base.html' %} {% load static %} {% block body %}
-          <!----------------------SLIDER Start------------------------>
-       
-          <!-----------------SEARCH BAR Start------------------>
-      {% comment %} <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12 col-xs-12 search-here">
-			<div class="search-bar">
-				<input type="text" name="search-text" onkeyup="search(this.value)" placeholder="Search Here" class="my-input">  
-				 
-				<div id="search_response"> 
-            		<!--<div class="search_response">	-->
-             <ul class="typeahead dropdown-menu"  id="search_result">
-            		<!--</div>-->
-            	</div>
-			</div>
-		</div>
-	</div>
-</div> {% endcomment %}
-  
-          <!----------------- MAIN  START------------------------>
-<div class="container">
-      <div class="row">
-      <div class="alpha-ord-start">
-            <div class="col-md-12 col-xs-12 col-sm-12 alpha-ord-coup">
-                  {% for store in stores %}
-                  <a href="{{ store.website_url }}">
-                        <div class="col-md-2 col-sm-2 col-xs-6">
-                              <div class="alpha-ord-img">
-                              <img class="img-responsive" src="{{ store.image.url }}" alt="{{ store.store_name }}">
-                              </div>
-                        </div>
-                  </a>
-                  {% endfor %}
-            </div>
-      </div>
-      </div>
-</div>
-         <!---------------- SCRIPTS  END--------------------->
-      <script src="https://kit.fontawesome.com/a099f845ec.js" crossorigin="anonymous"></script> 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
-      <script type="" src="js/site.js"></script>
-      <script type="" src="web-assets/js/bootstrap.min.js"></script>
-      <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
-    </body>
 
-<!-- Mirrored from www.pubmybrand.com/coupons/stores by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 14 Jun 2024 10:51:33 GMT -->
-</html>
+<!------------------MAIN START------------------------>
+<div class="container">
+  <div class="row">
+    <div class="alpha-ord-start">
+      <div class="col-md-12 col-xs-12 col-sm-12 alpha-ord-coup">
+        {% if category %} {% comment %}
+        <h2>Stores in {{ category.name }}</h2>
+        {% endcomment %} {% for store in stores %}
+        <a href="{% url 'store_detail'  store.slug%}">
+          <div class="col-md-2 col-sm-2 col-xs-6">
+            <div class="alpha-ord-img">
+              <img
+                src="{{ store.image.url }}"
+                class="img-responsive"
+                alt="{{ store.store_name }}"
+              />
+            </div>
+          </div>
+        </a>
+
+        {% endfor %} {% else %} {% comment %}
+        <h2>All Stores</h2>
+        {% endcomment %} {% for store in stores %}
+        <a href="{% url 'store_detail'  store.slug%}">
+          <div class="col-md-2 col-sm-2 col-xs-6">
+            <div class="alpha-ord-img">
+              <img
+                src="{{ store.image.url }}"
+                class="img-responsive"
+                alt="{{ store.store_name }}"
+              />
+            </div>
+          </div>
+        </a>
+        {% endfor %} {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<!---------------- SCRIPTS END--------------------->
+<script
+  src="https://kit.fontawesome.com/a099f845ec.js"
+  crossorigin="anonymous"
+></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="" src="{% static 'js/site.js' %}"></script>
+<script type="" src="{% static 'web-assets/js/bootstrap.min.js' %}"></script>
+<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 {% endblock body %}

@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from blog.models import Blog, BlogCategory, Contact
-from .models import Store,Category
+from .models import Store,Category, Coupon
 # Create your views here.
 def index(request):
     blogs = Blog.objects.all()
@@ -59,14 +59,20 @@ def contact_form_submit(request):
         contact.save()
 
         return redirect('impressum')
-def stores(request):
-    stores = Store.objects.all()
+def stores(request, category_slug=None):
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        stores = Store.objects.filter(categories=category)
+    else:
+        stores = Store.objects.all()
+    
     navigation = BlogCategory.objects.all()[:5]
     context = {
-        'stores':stores,
-        'navigation':navigation
+        'stores': stores,
+        'navigation': navigation,
+        'category': category if category_slug else None,
     }
-    return render(request,'stores.html',context)
+    return render(request, 'stores.html', context)
 def show_categories(request):
     categories = Category.objects.all()
     navigation = BlogCategory.objects.all()[:5]
@@ -76,3 +82,19 @@ def show_categories(request):
     }
     print(categories)
     return render(request,'categories.html',context)
+def category_detail(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    context = {
+        'category': category
+    }
+    return render(request, 'category_detail.html', context)
+def store_detail(request, slug):
+    store = get_object_or_404(Store, slug=slug)
+    coupons = Coupon.objects.filter(store=store)
+    stores = Store.objects.all().order_by("?")[:12]
+    context = {
+        'store': store,
+        'coupons': coupons,
+        "stores":stores
+    }
+    return render(request, 'store_detail.html', context)

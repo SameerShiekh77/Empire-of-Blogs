@@ -4326,7 +4326,7 @@ width: 100%; /* Ensures the span takes up the full width of its container */
 }
 
 .thumb_inside {
-    background-color: #edf5f7;
+    background-color: #FFFFFF;
     margin-bottom: auto;
     /* margin-top: auto; */
     padding: 10px;
@@ -4340,4 +4340,155 @@ width: 100%; /* Ensures the span takes up the full width of its container */
 .thumb p {
     font-size: 16px;
     color: #337ab7;
+}
+.single-coup-boxstyle
+{
+	background-color: #FFFFFF;
+	border:1px solid #f99cc5 ;
+	margin-top: 40px; 
+	padding: 28px 10px;
+}
+.single-coup-right span
+{
+	font-size: 16px;
+	font-weight: bold;
+}
+.single-coup-box .show-btn
+{
+	float: right;
+	border:1px solid #151413 ;
+	border-radius: 5px;
+	padding: 5px 5px;
+	text-decoration: none;
+}
+@media only screen and (min-width: 1050px) {
+	.single-coup-boxstyle
+	{ 
+	}
+}
+.coup-img > img{
+    margin: 0 auto;
+       width: 100%;
+ 
+} 
+.coup-start
+{
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+.featured-coup-hd span
+{
+	color:#525252;
+	font-size:17px;
+	font-weight: bold;
+
+}
+.featured-coup-hd{
+    text-align:center;
+}
+.feat-coup-box
+{
+	margin-top: 10px;
+	background-color: #FFFFFF;
+	border:1px solid #DDDDDD;
+}
+.coup-text
+{
+	margin-top: 15px;
+	
+}
+/*.border*/
+/*{*/
+/*	border-right: 1px dashed #DDDDDD;*/
+/*}*/
+.coup-text p
+{
+	color: #111111;
+	line-height: 22.1px;
+}
+.coup-text span
+{
+	color: #111111;
+	font-weight: 600;
+	font-size: 16px;
+	display: block;
+}
+.get-code
+{
+	margin-top: 22px;
+	text-align: center;
+
+}
+.get-code a
+{
+	font-size: 14px;	
+	display: block;
+	background-color: #565656;
+	padding: 5px;
+	color: #FFFFFF;
+	border-radius: 14px;
+}
+.get-code a:hover
+{
+	background-color: #000000;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.get-code span
+{
+	color: #06ea20;
+	font-size: 12px;
+	font-weight:600; 
+}
+.align-top
+{
+	margin-top: 10px;
+}
+
+@media only screen and (min-width: 320px) and (max-width:600px)  {
+
+	.border 
+	{
+    /*border-bottom: 1px dashed #DDDDDD;*/
+    border-right: none !important;
+    }
+
+
+}
+.poopular-categoreis
+{
+	margin-top: 36px;
+}
+.pop-cat-hd
+{
+	margin-bottom: 10px;
+}
+.pop-cat-hd span
+{
+	color: #525252;
+    font-size: 17px;
+}
+.pop-cat-box
+{
+	background-color: #f6f6f6;
+	padding: 7px 9px;
+	border-bottom:1px solid #fbadcf;
+}
+.pop-cat-box:hover
+{
+	transition: 0.3s ease-in-out;
+	background-color: #ddd;
+}
+.pop-cat-anc 
+{
+	text-decoration: none !important;
+}
+.pop-cat-anc img
+{
+	width: 14%;
+}
+.pop-cat-anc span
+{
+	margin-left: 4px;
+	color: #111111;
 }

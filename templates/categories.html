@@ -1,18 +1,21 @@
-{% extends 'base.html' %} {% load static %} {% block body %}  
-          <!------------------MAIN  START---------------------->
- <div class="container">
+{% extends 'base.html' %} 
+{% load static %} 
+{% block body %}  
+    <!------------------MAIN  START---------------------->
+    <div class="container">
         <div class="row">
             <div class="col-md-12 col-xs-12 col-sm-12 my-category">
                 {% for category in categories %}
+                <a href="{% url 'category_stores' category.slug %}">
                     <div class="col-md-3 col-xs-12 col-sm-3 thumb">
                         <div class="thumb_inside">
                             <img src="{{ category.image.url }}" alt="{{ category.name }}">
                         </div>
                         <p>{{ category.name }}</p>
                     </div>
+                </a>
                 {% endfor %}
             </div>
         </div>
     </div>
-   
 {% endblock body %}
