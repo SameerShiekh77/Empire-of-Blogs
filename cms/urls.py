@@ -15,13 +15,4 @@ urlpatterns = [
     path('categories/',show_categories,name='categories'),
     path('category/<slug:slug>/', category_detail, name='category_detail'),
     path('store/<slug:slug>/', store_detail, name='store_detail'),
-    # path('blogs/',blogs,name='blogs'),
-    # path('blog-detail/<slug:slug>/',blog_detail,name='blog-ail'),
-    # path('subscriber-email/',subscriber_email,name='subscri-email'),
-    # path('blog-category/',blog_category,name='blog-category
-    # path('categories/',categories,name='categories'),
-    # path('category-detail/<slug:slug>/',category_detail,name='category-detail'),
-    # path('stores/',stores,name='stores'),
-    # path('store-detail/<slug:slug>/',store_detail,name='store-detail'),
-    # path('get_search_suggestions/', get_search_suggestions, name='get_search_suggestions'),
-]
+ ]

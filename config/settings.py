@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'import_export',
     'froala_editor',
     'blog',
+    'django_browser_reload',
 ]
 
 MIDDLEWARE = [
@@ -42,6 +43,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
+
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -209,3 +212,6 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://127.0.0.1:3000',
 ]
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 100000000000  # 1 GB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 100000000000  # 1 GB

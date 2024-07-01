@@ -23,3 +23,13 @@ def subscriber_email(request):
         return redirect('index')
 
         
+        
+def category(request,slug):
+    navigation = BlogCategory.objects.all()[:5]
+    category = BlogCategory.objects.filter(slug=slug).first()
+    context = {
+        'navigation':navigation,
+        "category":category
+        
+    }
+    return render(request,'blog-category.html',context)
