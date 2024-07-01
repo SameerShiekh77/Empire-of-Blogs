@@ -98,3 +98,11 @@ def store_detail(request, slug):
         "stores":stores
     }
     return render(request, 'store_detail.html', context)
+def coupon_list(request):
+    coupon = Coupon.objects.all()
+    categoreis = Category.objects.filter(is_popluar=True)
+    context = {
+        'coupons': coupon,
+        'categoreis': categoreis
+    }
+    return render(request, 'coupon.html', context)

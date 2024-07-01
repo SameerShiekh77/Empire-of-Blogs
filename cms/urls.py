@@ -1,5 +1,5 @@
 from django.urls import path,include
-from .views import index, about_us, terms_and_conditions, privacy_policy, terms_of_use, impressum_page,contact_form_submit, stores, show_categories, category_detail, store_detail
+from .views import index, about_us, terms_and_conditions, privacy_policy, terms_of_use, impressum_page,contact_form_submit, stores, show_categories, category_detail, store_detail, coupon_list
 from froala_editor import views
 urlpatterns = [
     path('froala_editor/',include('froala_editor.urls')),
@@ -15,4 +15,5 @@ urlpatterns = [
     path('categories/',show_categories,name='categories'),
     path('category/<slug:slug>/', category_detail, name='category_detail'),
     path('store/<slug:slug>/', store_detail, name='store_detail'),
- ]
+    path('coupon-list/', coupon_list, name='coupon-list')  
+]
