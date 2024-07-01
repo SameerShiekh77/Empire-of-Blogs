@@ -23,9 +23,9 @@ class Blog(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     blog_category = models.ForeignKey(BlogCategory,blank=True,null=True,on_delete=models.SET_NULL)
     no_of_likes = models.IntegerField(default=0)
-    is_latest_blog = models.BooleanField(default=False)
-    buy_now_button_link = models.CharField(max_length=225,null=True,blank=True)
-    is_buy_now_button_enabled = models.BooleanField(default=False,null=True, blank=True)
+    is_featured_blog = models.BooleanField(default=False)
+    # buy_now_button_link = models.CharField(max_length=225,null=True,blank=True)
+    # is_buy_now_button_enabled = models.BooleanField(default=False,null=True, blank=True)
     created_at = models.DateTimeField(default=datetime.now())
 
     def __str__(self):

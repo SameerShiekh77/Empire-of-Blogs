@@ -41,7 +41,12 @@ def privacy_policy(request):
     }
     return render(request,'privacy.html',context)
 def impressum_page(request):
-    return render(request,'impressum.html')
+    navigation = BlogCategory.objects.all()[:5]
+    context = {
+        'navigation':navigation
+    }
+    
+    return render(request,'impressum.html',context)
 def contact_form_submit(request):
     if request.method == 'POST':
         user_name = request.POST.get('user_name')
@@ -82,18 +87,25 @@ def show_categories(request):
     }
     print(categories)
     return render(request,'categories.html',context)
+
+
+
 def category_detail(request, slug):
     category = get_object_or_404(Category, slug=slug)
     context = {
         'category': category
     }
     return render(request, 'category_detail.html', context)
+
+
 def store_detail(request, slug):
     store = get_object_or_404(Store, slug=slug)
     coupons = Coupon.objects.filter(store=store)
     stores = Store.objects.all().order_by("?")[:12]
+    navigation = BlogCategory.objects.all()[:5]
     context = {
         'store': store,
+        'navigation':navigation,
         'coupons': coupons,
         "stores":stores
     }
@@ -101,8 +113,11 @@ def store_detail(request, slug):
 def coupon_list(request):
     coupon = Coupon.objects.all()
     categoreis = Category.objects.filter(is_popluar=True)
+    navigation = BlogCategory.objects.all()[:5]
+    
     context = {
         'coupons': coupon,
+        'navigation':navigation,
         'categoreis': categoreis
     }
     return render(request, 'coupon.html', context)

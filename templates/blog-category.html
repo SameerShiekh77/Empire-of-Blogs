@@ -19,17 +19,18 @@
 
                               <div class="t-container-iner">
                                   <div class="t-storeBars">
-                                    {% for cat in category %}
-                                      <a href="{% url "blog_detail" cat %}">
+                                    {% for blog in blogs %}
+                                      <a href="{% url "blog-detail" blog.slug %}">
                                           <div class="t-container-0-2-229">
                                               <div class="t-storeImgContainer-0-2-230">
-                                                  <picture><img src="../../images/blog/312312321.jpg" alt="The Art Of Solo Travel Tips And Tricks For An Unforgettable Adventure" class="t-loading t-load t-storeImg" /></picture>
+                                                  <picture><img src="{{blog.image.url}}" alt="{{blog.title}}" class="t-loading t-load t-storeImg" /></picture>
                                               </div>
                                               <div class="t-storeInfoBox">
                                                   <div class="t-leftStoreInfo">
-                                                      <div class="t-name">The Art Of Solo Travel Tips And Tricks For An Unforgettable Adventure</div>
+                                                      <div class="t-name">{{blog.title}}</div>
                                                       <div>
-                                                          <span class="t-description"></span>
+                                                          <span class="t-description">{{blog.description |slice:10 | safe}}
+                                                          </span>
                                                       </div>
                                                   </div>
                                               </div>
@@ -50,138 +51,37 @@
                               <div class="t-streamContainer">
                                   <h2 class="t-title">
                                       Featured Blogs
-                                      <!--<div class="t-addCode-0-2-110">
-<span class="t-addCodePlus-0-2-111">+</span> Have a code?
-</div>-->
+                                    
                                   </h2>
+                                  {% for featured_blog in featured_blogs %}
 
                                   <div class="u-main">
-                                      <a href="../../blogs/green-gadgets-best-selling-apple-smart-watches.html">
+                                      <a href="{% url "featured_blog-detail" featured_blog.slug %}">
                                           <div class="t-main-0-2-217">
                                               <div class="t-couponContainer">
-                                                  <!--<div class="t-nameBox-2">
-           <div class="t-storeName"></div>
-        </div>-->
+                                                 
                                                   <div>
                                                       <span>
-                                                          <!-- <div>
-                 <div class="t-couponMargin">
-                   <div class="t-couponCode">4KFIRETV</div>
-           </div>
-       </div>-->
-                                                          <div class="t-couponDesc">Best-Selling Apple Smart Watches By Green Gadgets</div>
+                                                          <div class="t-couponDesc">{{featured_blog.title}}</div>
                                                       </span>
                                                   </div>
 
                                                   <div>
                                                       <div class="t-lastUsed-0-2-224">
                                                           <div class="t-codeWorkedImg-0-2-226">
-                                                              <!--<div class="h-icon t-icon"><i class="fa fa-check" aria-hidden="true"></i></div>-->
+                                                              
                                                           </div>
 
-                                                          <div class="t-workedAlign-0-2-225">Home and Tech</div>
+                                                          <div class="t-workedAlign-0-2-225">{{featured_blog.blog_category}}</div>
                                                       </div>
                                                   </div>
                                               </div>
                                           </div>
                                       </a>
                                   </div>
+                                  {% endfor %}
 
-                                  <div class="u-main">
-                                      <a href="../../blogs/careyou-top-4-home-decor-items.html">
-                                          <div class="t-main-0-2-217">
-                                              <div class="t-couponContainer">
-                                                  <!--<div class="t-nameBox-2">
-           <div class="t-storeName"></div>
-        </div>-->
-                                                  <div>
-                                                      <span>
-                                                          <!-- <div>
-                 <div class="t-couponMargin">
-                   <div class="t-couponCode">4KFIRETV</div>
-           </div>
-       </div>-->
-                                                          <div class="t-couponDesc">Home Decor Items By CareYou</div>
-                                                      </span>
-                                                  </div>
-
-                                                  <div>
-                                                      <div class="t-lastUsed-0-2-224">
-                                                          <div class="t-codeWorkedImg-0-2-226">
-                                                              <!--<div class="h-icon t-icon"><i class="fa fa-check" aria-hidden="true"></i></div>-->
-                                                          </div>
-
-                                                          <div class="t-workedAlign-0-2-225">Lifestyle</div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </a>
-                                  </div>
-
-                                  <div class="u-main">
-                                      <a href="../../blogs/zerorectriction-best-selling-womens-layers.html">
-                                          <div class="t-main-0-2-217">
-                                              <div class="t-couponContainer">
-                                                  <!--<div class="t-nameBox-2">
-           <div class="t-storeName"></div>
-        </div>-->
-                                                  <div>
-                                                      <span>
-                                                          <!-- <div>
-                 <div class="t-couponMargin">
-                   <div class="t-couponCode">4KFIRETV</div>
-           </div>
-       </div>-->
-                                                          <div class="t-couponDesc">Best-Selling Women’s Layers By Zero Restriction</div>
-                                                      </span>
-                                                  </div>
-
-                                                  <div>
-                                                      <div class="t-lastUsed-0-2-224">
-                                                          <div class="t-codeWorkedImg-0-2-226">
-                                                              <!--<div class="h-icon t-icon"><i class="fa fa-check" aria-hidden="true"></i></div>-->
-                                                          </div>
-
-                                                          <div class="t-workedAlign-0-2-225">Lifestyle</div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </a>
-                                  </div>
-
-                                  <div class="u-main">
-                                      <a href="../../blogs/overcome-cleaning-challenges-ecovacs.html">
-                                          <div class="t-main-0-2-217">
-                                              <div class="t-couponContainer">
-                                                  <!--<div class="t-nameBox-2">
-           <div class="t-storeName"></div>
-        </div>-->
-                                                  <div>
-                                                      <span>
-                                                          <!-- <div>
-                 <div class="t-couponMargin">
-                   <div class="t-couponCode">4KFIRETV</div>
-           </div>
-       </div>-->
-                                                          <div class="t-couponDesc">Overcome Cleaning Challenges with Robotic Wonder by ECOVACS</div>
-                                                      </span>
-                                                  </div>
-
-                                                  <div>
-                                                      <div class="t-lastUsed-0-2-224">
-                                                          <div class="t-codeWorkedImg-0-2-226">
-                                                              <!--<div class="h-icon t-icon"><i class="fa fa-check" aria-hidden="true"></i></div>-->
-                                                          </div>
-
-                                                          <div class="t-workedAlign-0-2-225">Home and Tech</div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </a>
-                                  </div>
+                                  
                               </div>
                           </div>
 
@@ -189,138 +89,37 @@
                               <div class="t-streamContainer">
                                   <h2 class="t-title">
                                       Recent Blogs
-                                      <!--<div class="t-addCode-0-2-110">
-<span class="t-addCodePlus-0-2-111">+</span> Have a code?
-</div>-->
+                                   
                                   </h2>
-
+                                  {% for recent_blog in recent_blogs %}
                                   <div class="u-main">
-                                      <a href="../../blogs/green-gadgets-best-selling-apple-smart-watches.html">
+                                      <a href="">
                                           <div class="t-main-0-2-217">
                                               <div class="t-couponContainer">
-                                                  <!--<div class="t-nameBox-2">
-           <div class="t-storeName"></div>
-        </div>-->
+                                                
                                                   <div>
                                                       <span>
-                                                          <!-- <div>
-                 <div class="t-couponMargin">
-                   <div class="t-couponCode">4KFIRETV</div>
-           </div>
-       </div>-->
-                                                          <div class="t-couponDesc">Best-Selling Apple Smart Watches By Green Gadgets</div>
+                                                          
+                                                          <div class="t-couponDesc">{{recent_blog.title}}</div>
                                                       </span>
                                                   </div>
 
                                                   <div>
                                                       <div class="t-lastUsed-0-2-224">
                                                           <div class="t-codeWorkedImg-0-2-226">
-                                                              <!--<div class="h-icon t-icon"><i class="fa fa-check" aria-hidden="true"></i></div>-->
+                                                             
                                                           </div>
 
-                                                          <div class="t-workedAlign-0-2-225">Home and Tech</div>
+                                                          <div class="t-workedAlign-0-2-225">{{recent_blog.blog_category}}</div>
                                                       </div>
                                                   </div>
                                               </div>
                                           </div>
                                       </a>
                                   </div>
+                                  {% endfor %}
 
-                                  <div class="u-main">
-                                      <a href="../../blogs/careyou-top-4-home-decor-items.html">
-                                          <div class="t-main-0-2-217">
-                                              <div class="t-couponContainer">
-                                                  <!--<div class="t-nameBox-2">
-           <div class="t-storeName"></div>
-        </div>-->
-                                                  <div>
-                                                      <span>
-                                                          <!-- <div>
-                 <div class="t-couponMargin">
-                   <div class="t-couponCode">4KFIRETV</div>
-           </div>
-       </div>-->
-                                                          <div class="t-couponDesc">Home Decor Items By CareYou</div>
-                                                      </span>
-                                                  </div>
-
-                                                  <div>
-                                                      <div class="t-lastUsed-0-2-224">
-                                                          <div class="t-codeWorkedImg-0-2-226">
-                                                              <!--<div class="h-icon t-icon"><i class="fa fa-check" aria-hidden="true"></i></div>-->
-                                                          </div>
-
-                                                          <div class="t-workedAlign-0-2-225">Lifestyle</div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </a>
-                                  </div>
-
-                                  <div class="u-main">
-                                      <a href="../../blogs/zerorectriction-best-selling-womens-layers.html">
-                                          <div class="t-main-0-2-217">
-                                              <div class="t-couponContainer">
-                                                  <!--<div class="t-nameBox-2">
-           <div class="t-storeName"></div>
-        </div>-->
-                                                  <div>
-                                                      <span>
-                                                          <!-- <div>
-                 <div class="t-couponMargin">
-                   <div class="t-couponCode">4KFIRETV</div>
-           </div>
-       </div>-->
-                                                          <div class="t-couponDesc">Best-Selling Women’s Layers By Zero Restriction</div>
-                                                      </span>
-                                                  </div>
-
-                                                  <div>
-                                                      <div class="t-lastUsed-0-2-224">
-                                                          <div class="t-codeWorkedImg-0-2-226">
-                                                              <!--<div class="h-icon t-icon"><i class="fa fa-check" aria-hidden="true"></i></div>-->
-                                                          </div>
-
-                                                          <div class="t-workedAlign-0-2-225">Lifestyle</div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </a>
-                                  </div>
-
-                                  <div class="u-main">
-                                      <a href="../../blogs/overcome-cleaning-challenges-ecovacs.html">
-                                          <div class="t-main-0-2-217">
-                                              <div class="t-couponContainer">
-                                                  <!--<div class="t-nameBox-2">
-           <div class="t-storeName"></div>
-        </div>-->
-                                                  <div>
-                                                      <span>
-                                                          <!-- <div>
-                 <div class="t-couponMargin">
-                   <div class="t-couponCode">4KFIRETV</div>
-           </div>
-       </div>-->
-                                                          <div class="t-couponDesc">Overcome Cleaning Challenges with Robotic Wonder by ECOVACS</div>
-                                                      </span>
-                                                  </div>
-
-                                                  <div>
-                                                      <div class="t-lastUsed-0-2-224">
-                                                          <div class="t-codeWorkedImg-0-2-226">
-                                                              <!--<div class="h-icon t-icon"><i class="fa fa-check" aria-hidden="true"></i></div>-->
-                                                          </div>
-
-                                                          <div class="t-workedAlign-0-2-225">Home and Tech</div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </a>
-                                  </div>
+                                
                               </div>
                           </div>
                       </div>

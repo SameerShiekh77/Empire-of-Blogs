@@ -5,10 +5,12 @@ def blog_detail(request,slug):
     
     blog = Blog.objects.filter(slug=slug).first()
     navigation = BlogCategory.objects.all()[:5]
+    recommend_blogs = Blog.objects.all().order_by("?")[:3]
     
     context = {
         'blog':blog,
-        'navigation':navigation
+        'navigation':navigation,
+        "recommend_blogs":recommend_blogs
         
     }
     return render(request,'blog-detail.html',context)
@@ -26,10 +28,15 @@ def subscriber_email(request):
         
 def category(request,slug):
     navigation = BlogCategory.objects.all()[:5]
-    category = BlogCategory.objects.filter(slug=slug).first()
+    all_blogs = Blog.objects.all()
+    blogs = all_blogs.filter(blog_category__slug=slug)
+    featured_blogs = all_blogs.filter(is_featured_blog=True)
+    recent_blogs = all_blogs.all().order_by('-created_at')
     context = {
         'navigation':navigation,
-        "category":category
+        "blogs":blogs,
+        'featured_blogs':featured_blogs,
+        "recent_blogs":recent_blogs
         
     }
     return render(request,'blog-category.html',context)

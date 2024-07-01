@@ -33,4 +33,35 @@
 
            </main>
 </div>
+
+<div class="Recom">
+   <div class="bg-re">
+     <div class="reco-tit title5">Recommended Reads</div>
+     <div class="all-cards">
+         
+   {% for recommend_blog in recommend_blogs %}
+    <div class="card-00">
+        <div class="blog-2 c0165">
+            <div>
+             <a href="{% url "blog-detail" recommend_blog.slug %}" aria-label="blog">
+               <picture><img src="{{recommend_blog.image.url}}" class="c0148"></picture>
+             </a>
+            </div>
+            
+            
+            <div class="c0169">
+              <div class="c0168 body1">{{recommend_blog.blog_category}}</div>
+            </div>
+            
+            <a href="the-rugs-usa-experience.html" class="title-blo title5" aria-label="fashion">{{recommend_blog.title}}</a>
+        </div>
+    </div> 
+   {% endfor %}
+    
+                
+
+
+     </div>
+   </div>
+</div>
 {% endblock body %}
