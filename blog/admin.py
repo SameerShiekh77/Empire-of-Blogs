@@ -9,7 +9,7 @@ class BlogAdmin(ImportExportModelAdmin, ExportActionModelAdmin,admin.ModelAdmin)
     prepopulated_fields = {'slug': ('title',)}
     
     list_filter = ('is_featured_blog',)
-    autocomplete_fields = ('author',)
+    autocomplete_fields = ('author','blog_category')
 
 admin.site.register(Blog,BlogAdmin)
 
