@@ -152,18 +152,24 @@ FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier' ,'code_view'
 CORS_ALLOWED_ORIGINS = [
     'https://empireofblogs.net',
     'http://empireofblogs.net',
+    'http://195.110.59.253',
+    'https://195.110.59.253',
     
 ]
 
 CORS_ALLOWED_ORIGINS += ['http://localhost:3000',
 'http://127.0.0.1:8000',
 'http://127.0.0.1:3000',
+'http://195.110.59.253',
+    'https://195.110.59.253',
 ]
 
 
 CORS_ORIGIN_WHITELIST = [
     u'https://empireofblogs.net',
     u'http://empireofblogs.net',
+    u'http://195.110.59.253',
+    u'https://195.110.59.253',
 ]
 
 
@@ -207,6 +213,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:8000',
     'http://127.0.0.1:3000',
+    'http://195.110.59.253',
+    'https://195.110.59.253',
 ]
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 100000000000  # 1 GB
