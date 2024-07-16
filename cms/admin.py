@@ -7,6 +7,7 @@ class CategoryAdmin(ImportExportModelAdmin, ExportActionModelAdmin,admin.ModelAd
     list_display = ('name','slug','created_at')
     search_fields = ('name','slug')
     readonly_fields = ('no_of_store',)
+    prepopulated_fields = {'slug':('name',)} 
 
     # resource_class = InstructorCommissionResource
     # def get_queryset(self, request):
@@ -61,4 +62,4 @@ admin.site.register(Store,StoreAdmin)
 admin.site.register(Coupon,CouponAdmin)
 admin.site.register(MetaTags)
 admin.site.register(BodyMetaTags)
-admin.site.register(Bannners,BannerAdmin)
+# admin.site.register(Bannners,BannerAdmin)
