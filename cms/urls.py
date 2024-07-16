@@ -15,5 +15,5 @@ urlpatterns = [
     path('categories/',show_categories,name='categories'),
     path('category/<slug:slug>/', category_detail, name='category_detail'),
     path('store/<slug:slug>/', store_detail, name='store_detail'),
-    path('coupon-list/', coupon_list, name='coupon-list')  
+    path('coupons/', coupon_list, name='coupons')  
 ]
