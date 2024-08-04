@@ -123,22 +123,6 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
-# if DEBUG:
-#     STATIC_URL = "/static/"
-# Add this to specify the directory where collected static files will be stored
-
-# if DEBUG:
-#     STATIC_URL = "/static/"
-# else:
-#     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-#     AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
-#     AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
-#     AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
-#     AWS_QUERYSTRING_AUTH = False
-#     STATIC_URL = env("S3_STATIC_URL")
-#     AWS_S3_FILE_OVERWRITE = False
-#     AWS_DEFAULT_ACL = None
-#     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 MEDIA_URL = '/media/'
