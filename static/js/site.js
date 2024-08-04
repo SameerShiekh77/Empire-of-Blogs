@@ -1,5 +1,5 @@
-var url='https://www.pubmybrand.com/ajax/data_collection.php';
-var constant_url='https://www.pubmybrand.com/';
+var url='https://www.empireofblogs.net/ajax/data_collection.php';
+var constant_url='https://www.empireofblogs.net/';
 
 function subscribe()
 {

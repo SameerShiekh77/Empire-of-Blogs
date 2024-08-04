@@ -62,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cms.context_processor.allMetaTags'
             ],
         },
     },
@@ -112,11 +113,18 @@ USE_I18N = True
 USE_TZ = True
 
 
+#  Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+# Add this if you have a specific directory for static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
-if DEBUG:
-    STATIC_URL = "/static/"
+# STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+# if DEBUG:
+#     STATIC_URL = "/static/"
 # Add this to specify the directory where collected static files will be stored
 
 # if DEBUG:

@@ -5,31 +5,10 @@
 
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-    <meta name="google-site-verification" content="ZjNRGMh2oiFry9EekUqGZkd5ECIAmKiq8c8NtGmVRzA" />
-    <meta name="robots" content="index" />
     <!-- Site Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="title" content="Check out the latest blogs, tips, DIY & hack and new ideas from empireofblogs.">
     <title>Empire of Blogs</title>
-    <meta name="keywords" content="empireofblogs"/>
-    <meta name="description" content="At empireofblogs: everything you need in one spot. Upgrade your knowledge with our beauty tips, DIY & lifestyle guides, Wellness, Entertainment, online education, shopping ideas, & Money Saving Tips. "/>
-    <meta property="og:title" content="Check out the latest blogs, tips, DIY & hack and new ideas from empireofblogs." />
-    <meta property="og:description" content="At empireofblogs: everything you need in one spot. Upgrade your knowledge with our beauty tips, DIY & lifestyle guides, Wellness, Entertainment, online education, shopping ideas, & Money Saving Tips. " /> 
-    <meta property="og:locale" content="en_US" /> 
-    <meta property="og:type" content="website" /> 
-    <meta property="og:image" content="{% static 'images/Logo@4x.png' %}"/>
-    <meta property="og:image:alt" content="empireofblogs" />
-    <meta property="og:url" content="index.html" />
-
-    <meta name="twitter:card" content="summary" /> 
-    <meta name="twitter:title" content="Check out the latest blogs, tips, DIY & hack and new ideas from empireofblogs."> 
-    <meta name="twitter:description" content="At empireofblogs: everything you need in one spot. Upgrade your knowledge with our beauty tips, DIY & lifestyle guides, Wellness, Entertainment, online education, shopping ideas, & Money Saving Tips. " /> 
-    <meta name="twitter:image:src" content="{% static 'images/Logo@4x.png' %}"> 
-    <meta name="twitter:site" content="@empireofblogs"> 
-    <meta name="twitter:creator" content="@empireofblogs">
-    
-    <link rel="canonical" href="index.html">
-   
    <link rel="icon"  href="{% static 'images/icon-4x.png' %}">
    <link rel="stylesheet" type="text/css" href="{% static 'web-asset/css/bootstrap.min.css' %}">
    <link rel="stylesheet" type="text/css" href="{% static 'web-asset/css/style.css' %}">
@@ -38,10 +17,16 @@
    <link href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'web-asset/js/bootstrap.min.js'%}"></script>
+
+    {% for head_tag in head_meta_tags %}
+    {{head_tag.meta_tag|safe}}
+    {% endfor %}
 </head>
 
 <body onclick="hidesearch()">
-
+{% for body_tag in body_tags %}
+{{body_tag.meta_tag |safe}}
+{% endfor %}
   <div id="content">
     <div class="t-main">
 
