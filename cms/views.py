@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from blog.models import Blog, BlogCategory, Contact
-from .models import Store,Category, Coupon
+from .models import Store,Category, Coupon, HomePageAdPlacement
 # Create your views here.
 def index(request):
+    home_ad = HomePageAdPlacement.objects.filter(is_active=True,banner_placed_on='home_page').first()
     blogs = Blog.objects.all()
     navigation = BlogCategory.objects.all()[:5]
     context = {
         'blogs':blogs,
-        'navigation':navigation
+        'navigation':navigation,
+        "home_ad":home_ad
     }
     return render(request,'index.html',context)
 
@@ -111,6 +113,8 @@ def store_detail(request, slug):
     }
     return render(request, 'store_detail.html', context)
 def coupon_list(request):
+    coupons_ad = HomePageAdPlacement.objects.filter(is_active=True,banner_placed_on='coupon_page').first()
+    
     coupon = Coupon.objects.all()
     categoreis = Category.objects.filter(is_popluar=True)
     navigation = BlogCategory.objects.all()[:5]
@@ -118,6 +122,7 @@ def coupon_list(request):
     context = {
         'coupons': coupon,
         'navigation':navigation,
-        'categoreis': categoreis
+        'categoreis': categoreis,
+        "coupons_ad":coupons_ad
     }
     return render(request, 'coupon.html', context)

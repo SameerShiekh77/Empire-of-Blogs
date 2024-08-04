@@ -40,6 +40,16 @@
    </div>
 </div>
 
+{% if home_ad %}
+<div class="col-md-12 banner-img">
+   <div class="text-center">
+      <a href="{{home_ad.ad_link}}" aria-label="advertise" target="_blank">
+         <img src="{{home_ad.ad_image.url}}" class="img-responsive" alt="{{home_ad.ad_name}}">
+     </a>
+ </div>
+  
+</div>
+{% endif %}
 </main>
 
 

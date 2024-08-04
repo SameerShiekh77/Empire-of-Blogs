@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cms.models import Category, Store, Coupon, MetaTags, BodyMetaTags, Bannners
+from cms.models import Category, Store, Coupon, MetaTags, BodyMetaTags, Bannners,HomePageAdPlacement
 from import_export.admin import ImportExportModelAdmin, ExportActionModelAdmin
 # Register your models here.
 
@@ -62,4 +62,5 @@ admin.site.register(Store,StoreAdmin)
 admin.site.register(Coupon,CouponAdmin)
 admin.site.register(MetaTags)
 admin.site.register(BodyMetaTags)
+admin.site.register(HomePageAdPlacement)
 # admin.site.register(Bannners,BannerAdmin)

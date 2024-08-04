@@ -85,3 +85,19 @@ class Bannners(models.Model):
 
     class Meta():
         verbose_name_plural = "Banners"
+
+
+class HomePageAdPlacement(models.Model):
+    AD_TYPE = (('home_page','home_page'),('coupon_page','coupon_page'))
+    ad_name = models.CharField(max_length=200)
+    ad_link = models.URLField()
+    ad_image = models.FileField(upload_to='home-advert')
+    is_active = models.BooleanField(default=False)
+    banner_placed_on = models.CharField(max_length=200,null=True,blank=True,choices=AD_TYPE)
+    created_at = models.DateTimeField(auto_now_add=True,blank=True,null=True)
+    
+    def __str__(self):
+        return self.ad_name
+    
+    class Meta:
+        verbose_name = 'Home Page Ad Placement'

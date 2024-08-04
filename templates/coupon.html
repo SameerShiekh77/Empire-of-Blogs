@@ -3,7 +3,6 @@
 
 {% block body %}
 
- <!------------------ MAIN   START---------------->
 <div class="container">
     <div class="row coup-start">
         <div class="col-md-8 col-sm-8 col-xs-12">
@@ -73,5 +72,17 @@
         </div>
     </div>
 </div>
+
+{% if coupons_ad %}
+<div class="col-md-12 banner-img">
+   <div class="text-center">
+      <a href="{{coupons_ad.ad_link}}" aria-label="advertise" target="_blank">
+         <img src="{{coupons_ad.ad_image.url}}" class="img-responsive" alt="{{coupons_ad.ad_name}}">
+     </a>
+ </div>
+  
+</div>
+{% endif %}
+
 
 {% endblock body %}
