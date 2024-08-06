@@ -101,3 +101,16 @@ class HomePageAdPlacement(models.Model):
     
     class Meta:
         verbose_name = 'Home Page Ad Placement'
+
+class HomePageBanner(models.Model):
+    banner_image = models.ImageField(upload_to='home-banner')
+    banner_name = models.CharField(max_length=200, null=True, blank=True)
+    banner_link = models.CharField(max_length=200)
+    is_active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.banner_name
+    
+    class Meta:
+        verbose_name = 'Home Page Banner'

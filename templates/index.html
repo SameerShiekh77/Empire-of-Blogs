@@ -4,6 +4,20 @@
 {% block body %}
 
 <main>
+   <!-- Banner Section Start -->
+<div class="swiper-container banner-section">
+   <div class="swiper-wrapper">
+       {% for banner in banners %}
+       <div class="swiper-slide banner-item">
+           <a href="{{ banner.banner_link }}" target="_blank">
+               <img src="{{ banner.banner_image.url }}" alt="{{ banner.banner_name }}">
+           </a>
+       </div>
+       {% endfor %}
+   </div>
+   <!-- Add Pagination -->
+   <div class="swiper-pagination"></div>
+</div>
 
 <div class="blog-main">
       <div class="blog-1">

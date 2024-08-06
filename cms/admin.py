@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cms.models import Category, Store, Coupon, MetaTags, BodyMetaTags, Bannners,HomePageAdPlacement
+from cms.models import Category, Store, Coupon, MetaTags, BodyMetaTags, Bannners,HomePageAdPlacement, HomePageBanner
 from import_export.admin import ImportExportModelAdmin, ExportActionModelAdmin
 # Register your models here.
 
@@ -55,7 +55,10 @@ class BannerAdmin(ImportExportModelAdmin, ExportActionModelAdmin,admin.ModelAdmi
     list_filter = ['rating']
     readonly_fields = ['created_at']
 
-
+class HomePageBannerAdmin(admin.ModelAdmin):
+    list_display = ('banner_name', 'banner_link', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    search_fields = ('banner_name', 'banner_link')
 
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Store,StoreAdmin)
@@ -63,4 +66,5 @@ admin.site.register(Coupon,CouponAdmin)
 admin.site.register(MetaTags)
 admin.site.register(BodyMetaTags)
 admin.site.register(HomePageAdPlacement)
+admin.site.register(HomePageBanner, HomePageBannerAdmin)
 # admin.site.register(Bannners,BannerAdmin)

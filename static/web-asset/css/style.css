@@ -4492,3 +4492,37 @@ width: 100%; /* Ensures the span takes up the full width of its container */
 	margin-left: 4px;
 	color: #111111;
 }
+.banner-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    /* background-color: #f8f8f8; */
+}
+
+.banner-item {
+    flex: 1 1 100%;
+    margin: 10px;
+    text-align: center;
+}
+
+.banner-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.banner-item img:hover {
+    transform: scale(1.05);
+}
+.swiper-button-next,
+.swiper-button-prev {
+    color: #000; /* Adjust color as needed */
+}
+
+.swiper-pagination-bullet {
+    background: #000; /* Adjust color as needed */
+}
+

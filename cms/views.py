@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from blog.models import Blog, BlogCategory, Contact
-from .models import Store,Category, Coupon, HomePageAdPlacement
+from .models import Store,Category, Coupon, HomePageAdPlacement, HomePageBanner
 # Create your views here.
 def index(request):
     home_ad = HomePageAdPlacement.objects.filter(is_active=True,banner_placed_on='home_page').first()
+    banners = HomePageBanner.objects.all()
     blogs = Blog.objects.all()
     navigation = BlogCategory.objects.all()[:5]
     context = {
         'blogs':blogs,
         'navigation':navigation,
+        'banners': banners,
         "home_ad":home_ad
     }
     return render(request,'index.html',context)
