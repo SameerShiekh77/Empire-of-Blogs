@@ -4493,23 +4493,32 @@ width: 100%; /* Ensures the span takes up the full width of its container */
 	color: #111111;
 }
 .banner-section {
+    width: 100%; /* Make sure the container takes full width */
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;
-    padding: 10px;
-    /* background-color: #f8f8f8; */
+    overflow: hidden; /* Prevent overflow causing cut-off */
+}
+
+.swiper-container {
+    width: 100%; /* Full width for the swiper container */
+}
+
+.swiper-slide {
+    width: 100%; /* Full width for each slide */
+    display: flex;
+    justify-content: center; /* Center content within the slide */
 }
 
 .banner-item {
-    flex: 1 1 100%;
-    margin: 10px;
+    width: 100%; /* Ensure the banner item takes full width */
     text-align: center;
+    box-sizing: border-box;
+    padding: 0 10px;
 }
 
 .banner-item img {
-    max-width: 100%;
-    height: auto;
+    width: 100%; /* Ensure the image covers the entire banner item */
     border-radius: 5px;
     transition: transform 0.3s ease;
 }
@@ -4517,12 +4526,156 @@ width: 100%; /* Ensures the span takes up the full width of its container */
 .banner-item img:hover {
     transform: scale(1.05);
 }
+
+/* Hide the swiper pagination and navigation */
+.swiper-pagination,
 .swiper-button-next,
 .swiper-button-prev {
-    color: #000; /* Adjust color as needed */
+    display: none;
 }
 
-.swiper-pagination-bullet {
-    background: #000; /* Adjust color as needed */
+/* Responsive image adjustments */
+@media (min-width: 600px) {
+    .banner-item img {
+        max-width: 80%;
+        padding: 0 15px; /* Increase padding for medium screens */
+    }
 }
+
+@media (min-width: 900px) {
+    .banner-item img {
+        max-width: 70%;
+        padding: 0 20px; /* Increase padding for larger screens */
+    }
+}
+
+@media (min-width: 1200px) {
+    .banner-item img {
+        max-width: 60%;
+        padding: 0 30px; /* Increase padding for even larger screens */
+    }
+}
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 800px; /* Maximum width */
+    border-radius: 10px; /* Rounded corners */
+    position: relative; /* For positioning close button */
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+}
+
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.store-image {
+    width: 100%;
+    max-width: 300px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 10px; /* Optional: adds rounded corners */
+}
+
+.modal-footer {
+    text-align: center;
+    margin-top: 20px; /* Space above the footer */
+}
+
+.visit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d; /* Grey color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.visit-button:hover {
+    background-color: #5a6268; /* Darker grey for hover */
+}
+
+
+.coupon-code-container {
+    text-align: center;
+}
+
+.coupon-code {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.copy-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d; /* Grey color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    background-color: #5a6268; /* Darker grey for hover */
+}
+
+/* Popup message styles */
+.popup-message {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px; /* Position from the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.popup-message.show {
+    display: block; /* Show message */
+}
+
+
 

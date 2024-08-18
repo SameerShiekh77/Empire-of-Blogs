@@ -338,17 +338,59 @@ function updateCounter(id,used){
 document.addEventListener('DOMContentLoaded', function () {
     var swiper = new Swiper('.swiper-container', {
         loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
         autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
+            delay: 3000, // Time between slides (in milliseconds)
+            disableOnInteraction: false, // Keep autoplay running even after user interaction
         },
+        slidesPerView: 1, // Show one slide at a time
+        spaceBetween: 10, // Add space between slides
+        allowTouchMove: false, // Disable manual slide swiping
     });
 });
+// Function to handle copying coupon code and showing a message
+function handleClick(couponCode, couponId, couponUrl) {
+    // Copy the coupon code to the clipboard
+    copyCouponCode(couponCode);
+
+    // Show the modal
+    showModal(couponId);
+
+    // Open the coupon URL in a new tab
+    window.open(couponUrl, '_blank');
+}
+
+function copyCouponCode(couponCode) {
+    // Copy the coupon code to the clipboard
+    const el = document.createElement('textarea');
+    el.value = couponCode;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    // Display a popup message
+    const popup = document.createElement('div');
+    popup.className = 'popup-message';
+    popup.innerText = 'Coupon code copied';
+    document.body.appendChild(popup);
+    setTimeout(() => document.body.removeChild(popup), 2000);
+}
+
+function showModal(couponId) {
+    const modal = document.getElementById(`modal-${couponId}`);
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeModal(couponId) {
+    const modal = document.getElementById(`modal-${couponId}`);
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+
+
+
+

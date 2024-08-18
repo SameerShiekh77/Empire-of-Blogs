@@ -1,88 +1,142 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block body %}
+{% extends 'base.html' %} {% load static %} {% block body %}
 
 <div class="container">
-    <div class="row coup-start">
-        <div class="col-md-8 col-sm-8 col-xs-12">
-            <div class="featured-coup-hd">
-                <h1>FEATURED OFFERS</h1>
+  <div class="row coup-start">
+    <div class="col-md-8 col-sm-8 col-xs-12">
+      <div class="featured-coup-hd">
+        <h1>FEATURED OFFERS</h1>
+      </div>
+      <div class="feat-coupons col-md-12 col-sm-12 col-xs-12">
+        {% for coupon in coupons %}
+        <div class="feat-coup-box col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-3 col-sm-3 col-xs-6 p-0">
+            <a
+              href="{% url 'store_detail' coupon.store.pk %}"
+              aria-label="coupons"
+            >
+              <div class="coup-img">
+                <img
+                  class="img-responsive"
+                  src="{{ coupon.store.image.url }}"
+                  alt="{{ coupon.store.name }}"
+                />
+              </div>
+            </a>
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-8 p-0">
+            <div class="col-md-7 col-sm-7 col-xs-12 border">
+              <div class="coup-text">
+                <b>{{ coupon.description }}</b>
+                <p></p>
+                <p>Used: {{ coupon.usage_count }}</p>
+              </div>
             </div>
-            <div class="feat-coupons col-md-12 col-sm-12 col-xs-12">
-                {% for coupon in coupons %}
-                <div class="feat-coup-box col-md-12 col-sm-12 col-xs-12">
-                    <div class="col-md-3 col-sm-3 col-xs-6 p-0">
-                        <a href="{% url 'store_detail' coupon.store.pk %}" aria-label="coupons">
-                            <div class="coup-img">
-                                <img class="img-responsive" src="{{ coupon.store.image.url }}" alt="{{ coupon.store.name }}">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-8 p-0">
-                        {% if coupon.is_deal %}
-                        <a onclick="getDeal('{{ coupon.pk }}', '{{ coupon.coupon_url }}'); updateCounter('{{ coupon.pk }}', 4);"
-                            href="javascript:void(0)">
-                            {% else %}
-                            <a href="{{ coupon.coupon_url }}" target="_blank">
-                                {% endif %}
-                                <div class="col-md-7 col-sm-7 col-xs-12 border">
-                                    <div class="coup-text">
-                                        <b>{{ coupon.description }}</b>
-                                        <p></p>
-                                        <p>Used: {{ coupon.usage_count }}</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="col-md-5 col-sm-5 col-xs-12">
-                                <div class="avail">
-                                    <div class="get-code">
-                                        <div>
-                                            {% if coupon.is_deal %}
-                                            <a onclick="getDeal('{{ coupon.pk }}', '{{ coupon.coupon_url }}'); updateCounter('{{ coupon.pk }}', 4);"
-                                                href="javascript:void(0)" class="get-code-btn">Get Deal</a>
-                                            {% else %}
-                                            <span style="display:none;" id="s{{ coupon.id }}">{{ coupon.coupon_code }}</span>
-                                            <a onclick="copyToClipboard('s{{ coupon.id }}', '{{ coupon.id }}', '{{ coupon.coupon_url }}');" href="javascript:void(0)" class="get-code-btn">Copy Code & Visit</a>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
+            <div class="col-md-5 col-sm-5 col-xs-12">
+              <div class="avail">
+                <div class="get-code">
+                  <div>
+                    {% if coupon.is_deal %}
+                    <a
+                      onclick="getDeal('{{ coupon.pk }}', '{{ coupon.coupon_url }}'); updateCounter('{{ coupon.pk }}', 4);"
+                      href="javascript:void(0)"
+                      class="get-code-btn"
+                      >Get Deal</a
+                    >
+                    {% else %}
+                    <a
+                      href="javascript:void(0)"
+                      onclick="handleClick('{{ coupon.coupon_code }}', '{{ coupon.pk }}', '{{ coupon.coupon_url }}')"
+                      class="get-code-btn"
+                      >Copy Code & Visit</a
+                    >
+                    {% endif %}
+                  </div>
                 </div>
-                {% endfor %}
+              </div>
             </div>
-        </div>
+          </div>
 
-        <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="poopular-categoreis">
-                <div class="pop-cat-hd">
-                    <span>POPULAR CATEGORIES</span>
+          <!-- Modal -->
+          <div class="modal" id="modal-{{ coupon.pk }}">
+            <div class="modal-content">
+              <span class="close-modal" onclick="closeModal('{{ coupon.pk }}')"
+                >&times;</span
+              >
+              <div class="modal-header">
+                <h2>{{ coupon.store.store_name }} Coupons and Promo Codes</h2>
+              </div>
+              <div class="modal-body">
+                <div class="image-container">
+                  <img
+                    src="{{ coupon.store.image.url }}"
+                    alt="{{ coupon.store.name }}"
+                    class="store-image"
+                  />
                 </div>
-                {% for category in categoreis %}
-                <a href="{% url 'category_detail' category.pk %}" class="pop-cat-anc">
-                    <div class="pop-cat-box">
-                        <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                        <span>{{ category.name }}</span>
-                    </div>
-                </a>
-                {% endfor %}
+                <div class="modal-footer">
+                  <a
+                    id="couponUrl-{{ coupon.pk }}"
+                    href="{{ coupon.coupon_url }}"
+                    target="_blank"
+                    class="visit-button"
+                    >Visit the Store</a
+                  >
+                </div>
+                <div class="coupon-code-container">
+                  <p><strong>Your special code is:</strong></p>
+                  <div class="coupon-code">
+                    <span id="couponCodeDisplay-{{ coupon.pk }}"
+                      >{{ coupon.coupon_code }}</span
+                    >
+                  </div>
+                  <button
+                    onclick="copyCouponCode('{{ coupon.coupon_code }}')"
+                    class="copy-btn"
+                  >
+                    Copy to Clipboard
+                  </button>
+                </div>
+              </div>
+              <div id="popup-message" class="popup-message">
+                Coupon code copied!
+              </div>
             </div>
+          </div>
+          {% endfor %}
         </div>
+      </div>
+
+      <div class="col-md-3 col-sm-3 col-xs-12">
+        <div class="poopular-categoreis">
+          <div class="pop-cat-hd">
+            <span>POPULAR CATEGORIES</span>
+          </div>
+          {% for category in categoreis %}
+          <a href="{% url 'category_detail' category.pk %}" class="pop-cat-anc">
+            <div class="pop-cat-box">
+              <img src="{{ category.image.url }}" alt="{{ category.name }}" />
+              <span>{{ category.name }}</span>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-{% if coupons_ad %}
-<div class="col-md-12 banner-img">
-   <div class="text-center">
+  {% if coupons_ad %}
+  <div class="col-md-12 banner-img">
+    <div class="text-center">
       <a href="{{coupons_ad.ad_link}}" aria-label="advertise" target="_blank">
-         <img src="{{coupons_ad.ad_image.url}}" class="img-responsive" alt="{{coupons_ad.ad_name}}">
-     </a>
- </div>
-  
+        <img
+          src="{{coupons_ad.ad_image.url}}"
+          class="img-responsive"
+          alt="{{coupons_ad.ad_name}}"
+        />
+      </a>
+    </div>
+  </div>
+  {% endif %}
 </div>
-{% endif %}
-
 
 {% endblock body %}
