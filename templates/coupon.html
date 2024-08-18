@@ -42,8 +42,8 @@
                                             <a onclick="getDeal('{{ coupon.pk }}', '{{ coupon.coupon_url }}'); updateCounter('{{ coupon.pk }}', 4);"
                                                 href="javascript:void(0)" class="get-code-btn">Get Deal</a>
                                             {% else %}
-                                            <a href="{{ coupon.coupon_url }}" target="_blank"
-                                                class="get-code-btn">Copy Code & Visit</a>
+                                            <span style="display:none;" id="s{{ coupon.id }}">{{ coupon.coupon_code }}</span>
+                                            <a onclick="copyToClipboard('s{{ coupon.id }}', '{{ coupon.id }}', '{{ coupon.coupon_url }}');" href="javascript:void(0)" class="get-code-btn">Copy Code & Visit</a>
                                             {% endif %}
                                         </div>
                                     </div>

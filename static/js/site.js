@@ -38,17 +38,22 @@ function copyCodeModal(id)
 
 
 
-function copyToClipboard(e,id,track){
-    var t=$("<input>");
-    $("body").append(t),
-    t.val($(e).text()).select(),
-    document.execCommand("copy"),
-    t.remove(),
-    document.getElementsByClassName("copyBtnClass").innerHTML="Copied",
-    window.open(track,"_blank"); 
-    window.location.href = "#modal-"+id; 
-    location.reload();  
+function copyToClipboard(selector, couponId, couponUrl){
+     // Get the text content from the specified element
+     var text = document.getElementById(selector).textContent;
+
+     // Use the Clipboard API to copy the text to the clipboard
+     navigator.clipboard.writeText(text).then(function() {
+         console.log('Copied to clipboard: ' + text);
+         // Optionally, you can navigate to the coupon URL after copying
+         window.open(couponUrl,"_blank")
+         window.location.href = couponUrl;
+         location.reload()
+     }).catch(function(error) {
+         console.error('Failed to copy to clipboard: ', error);
+     }); 
 }
+
 
 
 function getDeal(id,track){

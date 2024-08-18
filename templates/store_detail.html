@@ -55,8 +55,8 @@
                                         {% if coupon.is_deal %}
                                             <a onclick="updateCounter('{{ coupon.id }}', 1);" href="{{ coupon.coupon_url }}" class="get-code-btn">Get Deal</a>
                                         {% else %}
-                                            <span style="display:none;" id="s{{ coupon.id }}">{{ coupon.code }}</span>
-                                            <a onclick="copyToClipboard('#s{{ coupon.id }}', '{{ coupon.id }}', '{{ coupon.coupon_url }}'); updateCounter('{{ coupon.id }}', 1);" href="javascript:void(0)" class="get-code-btn">Copy Code & Visit</a>
+                                            <span style="display:none;" id="s{{ coupon.id }}">{{ coupon.coupon_code }}</span>
+                                            <a onclick="copyToClipboard('s{{ coupon.id }}', '{{ coupon.id }}', '{{ coupon.coupon_url }}');" href="javascript:void(0)" class="get-code-btn">Copy Code & Visit</a>
                                         {% endif %}
                                     </div>
                                 </div>
