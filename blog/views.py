@@ -22,6 +22,7 @@ def subscriber_email(request):
             SubscriberEmail.objects.create(email=email)
         except Exception as e:
             pass
+        # return render(request, 'index.html', {'subscribed': subscribed})
         return redirect('index')
 
         

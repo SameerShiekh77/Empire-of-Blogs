@@ -389,8 +389,25 @@ function closeModal(couponId) {
         modal.style.display = 'none';
     }
 }
+window.onload = function() {
+    // Check if the user has already subscribed
+    if (localStorage.getItem('subscribed') !== 'true') {
+        setTimeout(function() {
+            document.getElementById('newsletterPopup').style.display = 'flex';
+        }, 5000); // Show popup after 3 seconds
+    }
+};
 
+function closePopup() {
+    document.getElementById('newsletterPopup').style.display = 'none';
+}
 
+function subscribe() {
+    // After subscribing, set a flag in localStorage
+    localStorage.setItem('subscribed', 'true');
+    closePopup();
+}
+  
 
 
 

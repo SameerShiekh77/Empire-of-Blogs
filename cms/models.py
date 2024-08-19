@@ -41,6 +41,7 @@ class Coupon(models.Model):
     expiry_date = models.DateField()
     coupon_url = models.CharField(max_length=255)
     featured = models.BooleanField(default=False)
+    usage_count = models.IntegerField(default=0)
     is_deal =  models.BooleanField(default=False)
     sort_order  = models.IntegerField(default=1,blank=True,null=True)
     created_at = models.DateTimeField(auto_now_add=True,blank=True,null=True)

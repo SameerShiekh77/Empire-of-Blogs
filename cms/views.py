@@ -68,6 +68,18 @@ def contact_form_submit(request):
         contact.save()
 
         return redirect('impressum')
+# def newsletter_form_submit(request):
+#     subscribed = False
+#     if request.method == 'POST':
+#         email = request.POST.get('email')
+#         print("email,", email)
+#         # Create and save the newsletter subscription
+#         newsletter = Newsletter(
+#             email=email,
+#         )
+#         newsletter.save()
+#         subscribed = True
+#         return render(request, 'index.html', {'subscribed': subscribed})
 def stores(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
