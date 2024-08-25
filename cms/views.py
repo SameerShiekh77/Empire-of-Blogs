@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from blog.models import Blog, BlogCategory, Contact
 from .models import Store,Category, Coupon, HomePageAdPlacement, HomePageBanner
+from django.http import JsonResponse
 # Create your views here.
 def index(request):
     home_ad = HomePageAdPlacement.objects.filter(is_active=True,banner_placed_on='home_page').first()
@@ -140,3 +141,11 @@ def coupon_list(request):
         "coupons_ad":coupons_ad
     }
     return render(request, 'coupon.html', context)
+
+def search(request):
+    query = request.GET.get('search', '')
+    if query:
+        stores = Store.objects.filter(store_name__icontains=query)
+        results = [{'slug': store.slug, 'name': store.store_name} for store in stores]
+        return JsonResponse(results, safe=False)
+    return JsonResponse([], safe=False)

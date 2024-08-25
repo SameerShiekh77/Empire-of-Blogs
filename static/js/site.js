@@ -125,39 +125,39 @@ function popup_coupon()
 	document.getElementById('coupon').click();
 	}
 	}
-function search(val)
-{
-				if(val==null)
-				{
-					document.getElementById('search_response').style.display='none';
-				}
-				else
-				{
-					document.getElementById('search_result').style.display='block';
+// function search(val)
+// {
+// 				if(val==null)
+// 				{
+// 					document.getElementById('search_response').style.display='none';
+// 				}
+// 				else
+// 				{
+// 					document.getElementById('search_result').style.display='block';
 					
-					document.getElementById('search_result').innerHTML='<center><div class="loader"></div></center>';
-					// Return Request	
-							  var xhttp = new XMLHttpRequest();
-							  xhttp.onreadystatechange=function() {
-								if (this.readyState == 4 && this.status == 200) {	
-									document.getElementById('search_result').innerHTML=this.responseText;
+// 					document.getElementById('search_result').innerHTML='<center><div class="loader"></div></center>';
+// 					// Return Request	
+// 							  var xhttp = new XMLHttpRequest();
+// 							  xhttp.onreadystatechange=function() {
+// 								if (this.readyState == 4 && this.status == 200) {	
+// 									document.getElementById('search_result').innerHTML=this.responseText;
                                    									
 									
-								}
-							  };
-							 //Make Request						 
-							  xhttp.open("GET", constant_url+"ajax/data_collection.php?search="+val, true);
-							  xhttp.send();
+// 								}
+// 							  };
+// 							 //Make Request						 
+// 							  xhttp.open("GET", constant_url+"ajax/data_collection.php?search="+val, true);
+// 							  xhttp.send();
 					
-				}
+// 				}
 					
 					
 				
-}
-function hidesearch()
-{ 
-	document.getElementById('search_result').style.display='none';
-}
+// }
+// function hidesearch()
+// { 
+// 	document.getElementById('search_result').style.display='none';
+// }
 
 
 
@@ -407,7 +407,30 @@ function subscribe() {
     localStorage.setItem('subscribed', 'true');
     closePopup();
 }
-  
-
+function searchStores(query) {
+    if (query.length > 1) {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/store/search/',
+            type: 'GET',
+            data: { search: query },
+            success: function(data) {
+                let results = '';
+                if (data.length > 0) {
+                    data.forEach(function(store) {
+                        results += '<li><a href="/store/' + store.slug + '/">' + store.name + '</a></li>';
+                    });
+                } else {
+                    results = '<li>No results found</li>';
+                }
+                $('#search_result').html(results).show();
+            },
+            error: function() {
+                $('#search_result').html('<li>Error loading results</li>').show();
+            }
+        });
+    } else {
+        $('#search_result').hide();
+    }
+}
 
 

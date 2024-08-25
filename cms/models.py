@@ -108,7 +108,7 @@ class HomePageBanner(models.Model):
     banner_name = models.CharField(max_length=200, null=True, blank=True)
     banner_link = models.CharField(max_length=200)
     is_active = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.banner_name

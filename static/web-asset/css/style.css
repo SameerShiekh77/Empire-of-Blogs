@@ -4766,8 +4766,64 @@ width: 100%; /* Ensures the span takes up the full width of its container */
 .popup-content button:hover {
     background-color: #555;
 }
+.search {
+    position: relative; /* Ensure the search container is positioned relative */
+}
+
+.search input.my-input {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: border 0.3s ease-in-out;
+    width: 100%; /* Ensure the input field takes full width of the container */
+}
+
+.search input.my-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.search-results {
+    position: absolute; /* Position the search results below the input field */
+    top: 100%; /* Position it right below the input field */
+    left: 0;
+    right: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0 0 10px 10px;
+    z-index: 1000; /* Ensure it appears above other content */
+    display: none; /* Hide by default, show when there are search results */
+}
+
+.search-results ul {
+    margin: 0;
+    padding: 0;
+}
+
+.search-results li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-results li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .search input.my-input {
+        padding: 8px 15px;
+    }
+
+    .search-results {
+        width: 100%;
+    }
+}
 
 
 
-  
-  
