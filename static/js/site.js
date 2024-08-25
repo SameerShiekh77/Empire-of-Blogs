@@ -432,5 +432,35 @@ function searchStores(query) {
         $('#search_result').hide();
     }
 }
+// Handle the click for Copy Code & Visit
+function handleClick(couponCode, couponId, couponUrl) {
+    document.getElementById('modal-' + couponId).style.display = 'block';
+    document.getElementById('couponCodeDisplay-' + couponId).textContent = couponCode;
+    document.getElementById('couponUrl-' + couponId).href = couponUrl;
+}
+
+// Handle the click for Get Deal
+function handleDealClick(couponId, couponUrl) {
+    document.getElementById('modal-' + couponId).style.display = 'block';
+    document.getElementById('couponUrl-' + couponId).href = couponUrl;
+}
+
+// Close the modal
+function closeModal(couponId) {
+    document.getElementById('modal-' + couponId).style.display = 'none';
+}
+
+// Copy the coupon code to the clipboard
+function copyCouponCode(couponCode) {
+    navigator.clipboard.writeText(couponCode).then(function() {
+        // Show the copied message
+        var popup = document.getElementById('popup-message');
+        popup.style.display = 'block';
+        setTimeout(function() {
+            popup.style.display = 'none';
+        }, 2000);
+    });
+}
+
 
 

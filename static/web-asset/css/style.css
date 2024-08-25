@@ -4780,7 +4780,7 @@ width: 100%; /* Ensures the span takes up the full width of its container */
 }
 
 .search input.my-input:focus {
-    border-color: #007bff;
+    border-color: black;
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
@@ -4793,7 +4793,7 @@ width: 100%; /* Ensures the span takes up the full width of its container */
     list-style: none;
     padding: 0;
     margin: 0;
-    background: white;
+    background: #e0e0e0;
     border: 1px solid #ccc;
     border-radius: 0 0 10px 10px;
     z-index: 1000; /* Ensure it appears above other content */
@@ -4803,11 +4803,13 @@ width: 100%; /* Ensures the span takes up the full width of its container */
 .search-results ul {
     margin: 0;
     padding: 0;
+    color: white;
 }
 
 .search-results li {
     padding: 10px;
     cursor: pointer;
+    color: white !important;
 }
 
 .search-results li:hover {

@@ -90,6 +90,7 @@ def stores(request, category_slug=None):
     
     navigation = BlogCategory.objects.all()[:5]
     context = {
+        'show_search_bar': True,
         'stores': stores,
         'navigation': navigation,
         'category': category if category_slug else None,
@@ -130,11 +131,12 @@ def store_detail(request, slug):
 def coupon_list(request):
     coupons_ad = HomePageAdPlacement.objects.filter(is_active=True,banner_placed_on='coupon_page').first()
     
-    coupon = Coupon.objects.all()
+    coupon = Coupon.objects.order_by('sort_order')
     categoreis = Category.objects.filter(is_popluar=True)
     navigation = BlogCategory.objects.all()[:5]
     
     context = {
+        'show_search_bar': True,
         'coupons': coupon,
         'navigation':navigation,
         'categoreis': categoreis,
