@@ -13,6 +13,15 @@
           <div class="single-coup-right">
             <span>{{ store.store_name }}</span>
             <p>{{ store.description }}</p>
+            <div class="store-rating">
+              {% for i in "12345" %}
+                  {% if forloop.counter <= store.rating %}
+                      <i class="fa fa-star" style="color: gold;"></i>
+                  {% else %}
+                      <i class="fa fa-star-o" style="color: gold;"></i>
+                  {% endif %}
+              {% endfor %}
+          </div>
           </div>
         </div>
       </div>

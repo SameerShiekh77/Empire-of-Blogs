@@ -4826,6 +4826,12 @@ width: 100%; /* Ensures the span takes up the full width of its container */
         width: 100%;
     }
 }
+.store-rating {
+    margin-top: 5px;
+}
 
-
-
+.store-rating .fa-star,
+.store-rating .fa-star-o {
+    font-size: 19px;
+    margin-right: 2px;
+}
