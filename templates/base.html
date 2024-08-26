@@ -34,7 +34,7 @@
     <div class="t-main">
 
       <header>
-        <nav class="navbar navbar">
+        <nav class="navbar">
           <div class="container">
             <div class="row">
               <div class="navbar-header col-md-12 col-xs-12">
@@ -45,9 +45,9 @@
                   <span class="icon-bar"></span>
                 </button>
               </div>
-              <div class="col-md-8 col-sm-8 col-xs-12 logo-div">
+              <div class="col-md-12 col-sm-12 col-xs-12 logo-div">
                 <nav>
-                  <div class="blog-nav"> 
+                  <div class="blog-nav">
                     <a href="{% url 'index' %}" class="title2">Home</a>
                     {% for nav in navigation %}
                     <a href="{% url 'category' nav.slug %}" class="title2">{{ nav.name }}</a>
@@ -55,11 +55,11 @@
                     <a href="{% url 'stores' %}" class="title2">Store</a>
                     <a href="{% url 'categories' %}" class="title2">Categories</a>
                   </div>
-                </nav> 
+                </nav>
               </div>
               {% if show_search_bar %}
-              <div class="col-md-4 col-sm-4 col-xs-12 search-container">
-                <div class="search" style="margin-top: 15px;">
+              <div class="col-md-12 col-sm-12 col-xs-12 search-container">
+                <div class="search">
                   <input type="text" name="search-text" onkeyup="searchStores(this.value)" placeholder="Search Store Here" class="my-input form-control">
                   <div id="search_result" class="search-results">
                     <ul class="typeahead"></ul>
@@ -70,7 +70,7 @@
             </div>
           </div>
         </nav>
-      </header>
+      </header>      
       
           <nav>
  <div class="logo-div"> 
