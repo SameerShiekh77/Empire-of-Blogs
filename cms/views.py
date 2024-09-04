@@ -69,18 +69,6 @@ def contact_form_submit(request):
         contact.save()
 
         return redirect('impressum')
-# def newsletter_form_submit(request):
-#     subscribed = False
-#     if request.method == 'POST':
-#         email = request.POST.get('email')
-#         print("email,", email)
-#         # Create and save the newsletter subscription
-#         newsletter = Newsletter(
-#             email=email,
-#         )
-#         newsletter.save()
-#         subscribed = True
-#         return render(request, 'index.html', {'subscribed': subscribed})
 def stores(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
@@ -131,7 +119,7 @@ def store_detail(request, slug):
 def coupon_list(request):
     coupons_ad = HomePageAdPlacement.objects.filter(is_active=True,banner_placed_on='coupon_page').first()
     
-    coupon = Coupon.objects.order_by('sort_order')
+    coupon = Coupon.objects.filter(featured=True).order_by('sort_order')
     categoreis = Category.objects.filter(is_popluar=True)
     navigation = BlogCategory.objects.all()[:5]
     

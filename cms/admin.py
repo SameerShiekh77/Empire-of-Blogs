@@ -1,6 +1,8 @@
 from django.contrib import admin
 from cms.models import Category, Store, Coupon, MetaTags, BodyMetaTags, Bannners,HomePageAdPlacement, HomePageBanner
 from import_export.admin import ImportExportModelAdmin, ExportActionModelAdmin
+from django.db.models import Max
+from import_export import resources
 # Register your models here.
 
 class CategoryAdmin(ImportExportModelAdmin, ExportActionModelAdmin,admin.ModelAdmin):
@@ -49,6 +51,19 @@ class CouponAdmin(ImportExportModelAdmin, ExportActionModelAdmin,admin.ModelAdmi
     list_filter = ('is_deal','store__store_name')
     autocomplete_fields = ('store',)
     list_editable = ['sort_order']
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        if obj is None:
+            last_sort_order = Coupon.objects.aggregate(max_sort_order=Max('sort_order'))['max_sort_order']
+            next_sort_order = (last_sort_order or 0) + 1
+            form.base_fields['sort_order'].initial = next_sort_order
+        return form
+    def save_model(self, request, obj, form, change):
+        if not obj.pk:  # If the object is being created (not yet saved to the database)
+            last_id = Coupon.objects.aggregate(max_id=Max('id'))['max_id']
+            next_id = (last_id or 0) + 1
+            obj.id = next_id  # Set the ID manually (not usually necessary if using Django's default behavior)
+        super().save_model(request, obj, form, change)
 
 class BannerAdmin(ImportExportModelAdmin, ExportActionModelAdmin,admin.ModelAdmin):
     list_display = ['discount_percentage','reviews','rating']

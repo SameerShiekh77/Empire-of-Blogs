@@ -42,7 +42,6 @@
                     <a
                       onclick="handleClick('{{ coupon.coupon_code }}', '{{ coupon.pk }}', '{{ coupon.coupon_url }}')"
                       href="{{ coupon.coupon_url }}"
-                      class="get-code-btn"
                       target="_blank"
                       >Get Deal</a
                     >
@@ -51,9 +50,10 @@
                       >{{ coupon.coupon_code }}</span
                     >
                     <a
-                      href="javascript:void(0)"
+                      href="{{ coupon.coupon_url }}"
                       onclick="handleClick('{{ coupon.coupon_code }}', '{{ coupon.pk }}', '{{ coupon.coupon_url }}')"
                       class="get-code-btn"
+                      target="_blank"
                       >Copy Code & Visit</a
                     >
                     {% endif %}
