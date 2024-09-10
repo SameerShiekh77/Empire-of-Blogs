@@ -130,7 +130,7 @@
                     <span>POPULAR CATEGORIES</span>
                 </div>
                 {% for category in categoreis %}
-                <a href="{% url 'category_detail' category.pk %}" class="pop-cat-anc">
+                <a href="{% url 'category_stores' category.slug %}" class="pop-cat-anc">
                     <div class="pop-cat-box">
                         <img src="{{ category.image.url }}" alt="{{ category.name }}">
                         <span>{{ category.name }}</span>

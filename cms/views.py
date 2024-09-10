@@ -106,7 +106,7 @@ def category_detail(request, slug):
 
 def store_detail(request, slug):
     store = get_object_or_404(Store, slug=slug)
-    coupons = Coupon.objects.filter(store=store, featured=True)
+    coupons = Coupon.objects.filter(store=store)
     stores = Store.objects.all().order_by("?")[:12]
     navigation = BlogCategory.objects.all()[:5]
     context = {
