@@ -4,6 +4,329 @@ body {
   /*padding-top: 4.5rem;*/
 }
 
+header {
+  background: linear-gradient(to bottom, #ffffff, #f9f9f9); /* Subtle gradient */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.container-header {
+  width: 100%;
+  height: 70px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space items evenly */
+  padding: 0 20px;
+  position: relative;
+}
+
+.logo img {
+  height: 45px; /* Slightly larger logo */
+  width: auto;
+  margin: 25px;
+}
+@media screen and (max-width: 768px) {
+  .logo img {
+    height: 40px;
+    margin: 0%;
+  }
+  
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px; /* Spacing between links */
+  list-style: none;
+  margin: 0 auto; /* Center horizontally */
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600; /* Bolder font */
+  font-size: 15px;
+  letter-spacing: 0.5px; /* Subtle spacing */
+  transition: color 0.3s, transform 0.3s;
+  position: relative; /* Add relative positioning here */
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #737373;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.search-container {
+  position: relative;
+  width: 300px;
+}
+@media (max-width: 768px) {
+  .search-container {
+    width: 200px;
+    margin-left: 10px;
+  }
+}
+
+.search-container input {
+  width: 100%;
+  padding: 8px 35px 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-container input:focus {
+  border-color: #737373;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 14px;
+}
+.search-results {
+  position: absolute; /* Align results directly below the input */
+  top: 100%; /* Position below the input field */
+  left: 0;
+  width: 100%; /* Match input field width */
+  background-color: #fff; /* White background */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners for a smoother look */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  z-index: 1000; /* Ensure it's above other elements */
+  max-height: 250px; /* Restrict height with scroll */
+  overflow-y: auto; /* Add scroll if content exceeds max height */
+  color: #737373; /* Set text color */
+  font-family: 'Arial', sans-serif; /* Modern font */
+  font-size: 14px; /* Consistent font size */
+  padding: 8px 0; /* Add padding for better spacing */
+  border-radius: 8px; /* Smooth rounded corners */
+}
+
+/* Individual Search Result Item */
+.search-results .typeahead li {
+  padding: 12px 15px; /* Increased padding for better spacing */
+  border-bottom: 1px solid #f1f1f1; /* Light separator between items */
+  color: #737373; /* Maintain the text color */
+  font-size: 14px;
+  font-weight: normal; /* Default weight for results */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Remove the border for the last item */
+.search-results .typeahead li:last-child {
+  border-bottom: none; 
+}
+
+/* Hover Effect for Search Result Items */
+.search-results .typeahead li:hover {
+  background-color: #f0f0f0; /* Light gray hover background */
+  color: #0056b3; /* Change text color on hover for emphasis */
+  font-weight: bold; /* Make the text bold on hover */
+}
+
+/* Empty State for Search Results */
+.search-results .typeahead:empty::before {
+  content: "No results found."; /* Display message when no results */
+  display: block;
+  padding: 10px 15px;
+  color: #999; /* Lighter color for the empty state message */
+  text-align: center;
+  font-size: 14px;
+  font-style: italic; /* Italicize the empty message */
+}
+
+/* Add smooth scroll to the search results */
+.search-results .typeahead {
+  scroll-behavior: smooth;
+}
+
+/* General Hamburger Design */
+.hamburger {
+  cursor: pointer;
+  width: 40px; /* Smaller size */
+  height: 40px;
+  background: #fff; /* White background */
+  /* border-radius: 50%;  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(17, 17, 17, 0.1); /* Subtle shadow */
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.1); /* Slight scale on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+}
+
+.hamburger span {
+  position: absolute;
+  display: block;
+  width: 24px; /* Smaller bar length */
+  height: 3px; /* Thin lines */
+  background: #353333; /* Black lines */
+  border-radius: 2px; /* Rounded edges */
+  transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 10px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 18px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 26px;
+}
+
+/* Transformation to "X" shape */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 18px; /* Move to center */
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0; /* Hide middle bar */
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 18px; /* Move to center */
+}
 
 
+/* Navigation Section */
+@media (max-width: 768px) {
+  .nav-links {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hidden to the left */
+    width: 250px;
+    height: 100vh; /* Takes up full screen height */
+    flex-direction: column;
+    background: #f2f2f2; /* Light grey background */
+    text-align: left;
+    padding-top: 60px;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2);
+    transition: left 0.5s ease;
+    z-index: 1000;
+  }
 
+  .nav-links.active {
+    left: 0; /* Slide into view */
+  }
+
+  .nav-links li {
+    margin: 15px 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links li:hover {
+    transform: scale(1.05);
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #737373;
+  }
+
+  /* Hamburger - Only visible on small screens */
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Overlay Effect */
+body.overlay-active::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 999;
+  visibility: visible;
+  transition: visibility 0.5s ease;
+}
+
+body::before {
+  visibility: hidden;
+}
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex !important; /* Always visible in row layout */
+    position: static; /* Default positioning */
+    flex-direction: row; /* Horizontal links */
+    height: auto; /* Reset height */
+    box-shadow: none; /* Remove shadow */
+    background: none; /* Transparent background */
+  }
+
+  .hamburger {
+    display: none !important; /* Hide hamburger on large screens */
+  }
+}
+.swiper-container.banner-section {
+  width: 100%; /* Full width */
+  height: 300px; /* Set a height for the banner */
+  position: relative;
+  overflow: hidden; /* Hide any overflow from images */
+}
+
+.swiper-container .swiper-slide {
+  width: 100%; /* Full width for each slide */
+  height: 100%; /* Full height for each slide */
+}
+
+.swiper-container .swiper-slide img {
+  width: 100%; /* Image should cover the full width */
+  height: 100%; /* Image should cover the full height */
+  object-fit: cover; /* Ensures images cover the area without stretching */
+}
+
+/* Optional: If you want to ensure the banner takes full width on all devices */
+@media screen and (max-width: 768px) {
+  .swiper-container.banner-section {
+      height: 200px; /* You can adjust the height for smaller screens */
+  }
+}

@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function () {
             disableOnInteraction: false, // Keep autoplay running even after user interaction
         },
         slidesPerView: 1, // Show one slide at a time
-        spaceBetween: 10, // Add space between slides
+        // spaceBetween: 12, // Add space between slides
         allowTouchMove: false, // Disable manual slide swiping
     });
 });
@@ -410,8 +410,8 @@ function subscribe() {
 function searchStores(query) {
     if (query.length > 1) {
         $.ajax({
-            // url: 'http://127.0.0.1:8000/store/search/', #For Local system
-            url: 'https://empireofblogs.net/store/search/',
+            url: 'http://127.0.0.1:8000/store/search/',
+            // url: 'https://empireofblogs.net/store/search/',
             type: 'GET',
             data: { search: query },
             success: function(data) {
@@ -462,6 +462,26 @@ function copyCouponCode(couponCode) {
         }, 2000);
     });
 }
+// Hamburger Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+const body = document.body;
 
+// Toggle menu on hamburger click
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  hamburger.classList.toggle('active');
+  body.classList.toggle('overlay-active');
+});
 
+// Close menu if clicking outside the nav menu
+document.addEventListener('click', (event) => {
+  const isClickInsideMenu = navLinks.contains(event.target);
+  const isClickOnHamburger = hamburger.contains(event.target);
 
+  if (!isClickInsideMenu && !isClickOnHamburger) {
+    navLinks.classList.remove('active');
+    hamburger.classList.remove('active');
+    body.classList.remove('overlay-active');
+  }
+});

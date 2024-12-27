@@ -30,53 +30,45 @@
 {% for body_tag in body_tags %}
 {{body_tag.meta_tag |safe}}
 {% endfor %}
-  <div id="content">
-    <div class="t-main">
+<header>
+  <div class="container-header">
+      <!-- Logo -->
+      <div class="logo">
+          <a href="{% url 'index' %}">
+              <img src="{% static 'images/logo1.png' %}" alt="Empire of Blogs">
+          </a>
+      </div>
 
-      <header>
-        <nav class="navbar">
-          <div class="container">
-            <div class="row">
-              <div class="navbar-header col-md-12 col-xs-12">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="slide-collapse" data-target="#slide-navbar-collapse" aria-expanded="false">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-              </div>
-              <div class="col-md-12 col-sm-12 col-xs-12 logo-div">
-                <nav>
-                  <div class="blog-nav">
-                    <a href="{% url 'index' %}" class="title2">Home</a>
-                    {% for nav in navigation %}
-                    <a href="{% url 'category' nav.slug %}" class="title2">{{ nav.name }}</a>
-                    {% endfor %}
-                    <a href="{% url 'stores' %}" class="title2">Store</a>
-                    <a href="{% url 'categories' %}" class="title2">Categories</a>
-                  </div>
-                </nav>
-              </div>
-              {% if show_search_bar %}
-              <div class="col-md-12 col-sm-12 col-xs-12 search-container">
-                <div class="search">
-                  <input type="text" name="search-text" onkeyup="searchStores(this.value)" placeholder="Search Store Here" class="my-input form-control">
-                  <div id="search_result" class="search-results">
-                    <ul class="typeahead"></ul>
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-            </div>
+      <!-- Navigation -->
+      <ul class="nav-links">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          {% for nav in navigation %}
+          <li><a href="{% url 'category' nav.slug %}">{{ nav.name }}</a></li>
+          {% endfor %}
+          <li><a href="{% url 'stores' %}">Store</a></li>
+          <li><a href="{% url 'categories' %}">Categories</a></li>
+      </ul>
+
+      <!-- Search Bar -->
+      {% if show_search_bar %}
+      <div class="search-container">
+          <input type="text" name="search-text" placeholder="Search stores..." onkeyup="searchStores(this.value)">
+          <i class="fa fa-search search-icon"></i>
+          <div id="search_result" class="search-results">
+            {% comment %} <ul class="typeahead"></ul> {% endcomment %}
           </div>
-        </nav>
-      </header>      
-      
-          <nav>
- <div class="logo-div"> 
-      <a href="{% url "index" %}" alt="logo" aria-label="logo"><img src="{% static 'images/logo1.png' %}" class="nav-img img-responsive" alt=""></a>
- </div>
-</nav> 
+      </div>
+      {% endif %}
+
+      <!-- Hamburger -->
+      <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+  </div>
+</header>
+     
 
   {% block body %}
      
@@ -88,7 +80,7 @@
 <div class="gtranslate_wrapper"></div>
 
 
-<footer class="site-footer">
+ <footer class="site-footer">
       <div class="container">
         <div class="row">
  
@@ -97,15 +89,15 @@
             <div class="col-md-12 footer_logo_div">
                 <span style="display:flex; justify-content:center;">
                          <a class="" href="index.html" aria-label="logo">
-                       <img style="width: 120px; max-width:250px;" src="{% static 'images/logo1.png' %}" class="img-responsive" alt=""></a>
+                       <img style="width: 170px; max-width:300px;" src="{% static 'images/logo1.png' %}" class="img-responsive" alt=""></a>
                 </span>
            
           
-                <p class="footer-p">Empire of Blogs has a vision to introduce high distinguished brand stores where you can find everything that you ever dreamed of, now you don’t need to worry about your shopping because we make your purchasing facile and affordable. Our vision is to enable millions of customers around the globe to easily find out the treasured and favorite products in reasonable prices.</p>
+                <p class="footer-p">Empire of Blogs aims to connect you with top brand stores, offering everything you need at affordable prices. Our vision is to make shopping easy and accessible for millions worldwide, helping you find your favorite products effortlessly.</p>
             </div>
           </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
-              <h3 class="text-center">Useful Links</h3>
+              <h3 class="text-center-h">Useful Links</h3>
             <ul class="footer-links">
                 <li><a href="{% url "coupons" %}">Coupons</a></li>
               <li><a href="{% url "about-us" %}">About Us</a></li>
@@ -119,7 +111,7 @@
        
                       <div class="col-md-4 col-sm-4 col-xs-12">
                         <span class=" footer-widget">
-                            <h4 class="link-head">News Letter</h4>
+                            <h4 class="text-center-h">News Letter</h4>
                            
                             <p class=" footer-subscription">Get our Daily email newsletter with Special Services, Updates, Offers
                                 and more!
@@ -129,16 +121,17 @@
 
                                 <input type="email" class=" input-span" name="user_email" id="user_email2"
                                 placeholder="Your Email Address">
-                                <input type="submit" value="Go" class="fas fa fa-arrow-right  news-btn w-100"></input>
+                                <input type="submit" value="Submit" class="fas fa fa-arrow-right  news-btn w-100"></input>
                               </span>
                             </form>
                         </span>
                         <br>
                        
-            <ul class="social-icons">
-              <li><a class="facebook" href="#" aria-label="facebook"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="dribbble" href="#" aria-label="instagram"><i class="fa fa-instagram"></i></a></li>
-            </ul>
+                      <ul class="social-icons">
+                        <li><a class="facebook" href="#" aria-label="facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="instagram" href="#" aria-label="instagram"><i class="fa fa-instagram"></i></a></li>
+                      </ul>
+                      
                         
     </div>
   
@@ -163,7 +156,7 @@
 
         </div>
       </div>
-</footer>
+</footer> 
 
           
                     

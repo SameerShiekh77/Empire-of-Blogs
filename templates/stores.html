@@ -3,6 +3,17 @@
 <!------------------MAIN START------------------------>
 <div class="container">
   <div class="row">
+    <div class="swiper-container banner-section">
+      <div class="swiper-wrapper">
+          {% for banner in banners %}
+          <div class="swiper-slide banner-item">
+              <a href="{{ banner.banner_link }}" target="_blank">
+                  <img src="{{ banner.banner_image.url }}" alt="{{ banner.banner_name }}">
+              </a>
+          </div>
+          {% endfor %}
+      </div>
+   </div>
     <div class="alpha-ord-start">
       <div class="col-md-12 col-xs-12 col-sm-12 alpha-ord-coup">
         {% if category %} {% comment %}

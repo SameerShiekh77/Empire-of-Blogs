@@ -1932,8 +1932,8 @@ html, body, #content, #content > div,  {
 }
 
 .nav-a{
-    color: rgb(41, 42, 42);
-    font-size: 20px;
+     color: rgb(41, 42, 42);
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.5px;
     line-height: 50px;
@@ -2198,26 +2198,20 @@ html, body, #content, #content > div,  {
 .c0149:hover {
     opacity: 0.9;
 }
-/* .t-storeImgContainer-0-2-230 picture img {
-    max-width: 100%;
-    height: auto; 
-    max-height: 150px;
-    object-fit: cover; 
-    border-radius: 8px;} */
+
 .t-storeImgContainer-0-2-230 {
-    width: 200px; /* Increased width */
-    height: 160%; /* Increased height */
+    width: 160px;
+    height: 100%;
     display: inline-flex;
-    min-height: 110px; /* Adjusted min-height */
+    min-height: 95px;
     align-items: center;
     justify-content: center;
 }
 
 .t-storeImg {
-    max-width: 120px; /* Increased max-width */
-    max-height: 170px; /* Increased max-height */
+    max-width: 84px;
+    max-height: 84px;
 }
-
 
 .t-storeInfoBox {
     flex: 1;
@@ -2234,34 +2228,20 @@ html, body, #content, #content > div,  {
     color: #292a2a;
     cursor: pointer;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     padding-top: 18px;
 }
+
 .t-description {
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* Adjust the number for 2 or 3 lines */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
     color: #808080;
+    display: inline-block;
     font-size: 12px;
     margin-top: 6px;
     font-weight: 500;
     line-height: 1.4;
     margin-bottom: 6px;
 }
-/* .t-description {
-    color: #808080;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    font-size: 12px;
-    margin-top: 6px;
-    font-weight: 500;
-    line-height: 1.4;
-    margin-bottom: 6px;
-} */
 
 .stats {
     width: 100%;
@@ -2349,86 +2329,42 @@ html, body, #content, #content > div,  {
     cursor: pointer;
 }
 
-/* .t-couponContainer {
-    cursor: pointer;
-    padding: 18px 22px 14px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    border: 1px solid #e0e0e0; 
-    border-radius: 8px; 
-    transition: box-shadow 0.3s ease; 
-}
-
-.t-couponContainer:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-}
-
-.t-couponimg {
-    flex-shrink: 0; 
-}
-
-.t-storeImg {
-    max-width: 100px; 
-    max-height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.t-nameBox-2 {
-    color: #292a2a;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-.t-couponDesc {
-    color: #808080;
-    font-size: 13px;
-    font-weight: 400;
-    margin: 0; 
-}
-
-.t-lastUsed-0-2-224 {
-    margin-top: 5px;
-    font-size: 12px;
-    color: #808080;
-} */
 
 .t-couponContainer {
     cursor: pointer;
     padding: 18px 22px 14px;
+}
+
+.t-nameBox-2 {
+    color: #292a2a;
     display: flex;
-    align-items: flex-start; /* Align items to the top */
-    gap: 15px; /* Set the gap between image and text */
-    border-radius: 8px; /* Rounded corners */
-}
-
-.t-couponimg picture img {
-    max-width: 80px;
-    height: auto;
-    max-height: 120px;
-    object-fit: cover;
-    border-radius: 8px;
+    font-size: 14px;
+    align-items: center;
+    font-weight: 500;
+    margin-bottom: 8px;
 }
 
 
+.t-storeName {
+    margin-right: 5px;
+}
 
 .t-couponDesc {
-    color: #292a2a;
-    font-size: 14px;
-    font-weight: 600; /* Make the title bold */
-    margin-bottom: 5px; /* Space between title and category */
+    color: #808080;
+    margin: 8px 0px 16px;
+    position: relative;
+    font-size: 13px;
+    font-weight: 500;
 }
+
 
 .t-lastUsed-0-2-224 {
     color: #00c57d;
-    font-size: 12px; /* Adjust font size for the category */
-    font-weight: 500;
-    margin-top: 4px; /* Space above the category */
-    display: block; /* Ensure the category appears below the title */
+    display: flex;
+    font-size: 11px;
+    align-items: center;
+    font-weight: 400;
 }
-
 
 .t-codeWorkedImg {
     margin-right: 5px;
@@ -2498,7 +2434,6 @@ html, body, #content, #content > div,  {
     margin: auto;
     overflow: hidden;
     max-width: 1390px;
-    margin-top: 10px;
 }
 
 .blog-1 {
@@ -2656,8 +2591,9 @@ a, a div, a span, a img {
 
 @media (max-width: 950px)
     .blog-img1{
-    height: 400px;
-    margin-bottom: 30px;}
+    height: height: 400px;
+    margin-bottom: 30px;
+}
 
 
 
@@ -3042,11 +2978,7 @@ p {
 
 
 /*---------------------------------------------------footer-start---------------------------------------*/
-.text-center-h{
-    text-align:center;
-    color: #c93a50 !important;
-    font-weight: 900;
-}
+
 .site-footer
 {
   background-color:#565656;
@@ -3115,48 +3047,20 @@ p {
 {
   display:inline-block
 }
-.site-footer .social-icons {
-    text-align: center;
-    /* padding: 20px 0; */
-  }
-  
-  .site-footer .social-icons li {
-    display: inline-block;
-    /* margin: 0 5px; */
-  }
-  
-  .site-footer .social-icons a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 50%;
-    color: white;
-    text-decoration: none;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-  
-  /* Facebook Icon Style */
-  .site-footer .social-icons a.facebook {
-    background-color: #375aa3; /* Facebook Blue */
-  }
-  
-  .site-footer .social-icons a.facebook:hover {
-    background-color: #22396b;
-    transform: scale(1.1);
-  }
-  
-  /* Instagram Icon Style */
-  .site-footer .social-icons a.instagram {
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  }
-  
-  .site-footer .social-icons a.instagram:hover {
-    background: linear-gradient(45deg, #bc1888, #cc2366, #dc2743, #e6683c, #f09433);
-    transform: scale(1.1);
-  }
+.site-footer .social-icons
+{
+  text-align:center;
+}
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#97c7de;
+}
 .copyright-text
 {
   margin:0
@@ -4167,7 +4071,7 @@ header .logo {
 }
 .input-span {
     background-color: #fff !important;
-    /* border-radius: 50rem; */
+    border-radius: 50rem;
     outline: none;
     padding-top: 0.25rem !important;
     padding-bottom: 0.25rem !important;
@@ -4182,14 +4086,14 @@ header .logo {
 
 .news-btn {
     background-color: black;
-    /* border-radius: 50% !important; */
+    border-radius: 50% !important;
     padding: 0.5rem !important;
     margin-right: 0.25rem !important;
     color: #fff;
     text-align: center !important;
     cursor: pointer;
     /* margin: 5px; */
-    width: auto;
+    width: 30px;
     height: 30px;
 }
 .footer-links li{
@@ -4595,70 +4499,75 @@ width: 100%; /* Ensures the span takes up the full width of its container */
 	color: #111111;
 }
 .banner-section {
-    /* padding-top: 5px; */
-    width: 100% !important;
-    align-items: center !important;
-    overflow: hidden !important;
-    padding: 0 !important; /* Remove any padding */
-    margin: 0 !important;  /* Remove any margin */
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
-/* Swiper container */
+
+/* Swiper container that holds the slides */
 .swiper-container {
-    width: 100% !important;
-    height: 100% !important; /* Allow the height to adjust dynamically */
-    margin: 0 !important;   /* Ensure no margin around container */
-    padding: 0 !important;  /* Ensure no padding inside container */
+    width: 100%;
+    height: 250px; /* Fixed height for consistency */
 }
 
 /* Swiper slide */
 .swiper-slide {
-    /* display: flex !important; */
-    /* justify-content: center !important; */
-    align-items: center !important;
-    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically center the image */
 }
 
 /* Each banner item */
 .banner-item {
-    /* display: flex !important; */
-    /* justify-content: center !important; */
-    width: 100% !important;
-    height: 100% !important; /* Ensure the height adjusts based on the image */
-    margin: 0 !important;   /* Remove margin */
-    padding: 0 !important;  /* Remove padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 /* Image settings */
 .banner-item img {
-    width: 100% !important;          /* Force the image to span the full width of the container */
-    height: 100% !important;         /* Force the image to fill the height of the container */
-    object-fit: cover !important;    
-    object-position: center !important; 
-    margin: 0 !important;            /* Remove any margins */
-    padding: 0 !important;           /* Remove any padding */
-    /* display: flex; */
+    width: 100%;          /* Full width */
+    height: 100%;         /* Full height of the container */
+    object-fit: contain;  /* Prevent zooming or cropping */
+    max-height: 100%;     /* Fit image without overflow */
+    border-radius: 5px;
 }
 
-/* Responsive adjustments */
+/* Image hover effect */
+.banner-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Hide swiper pagination and navigation */
+.swiper-pagination,
+.swiper-button-next,
+.swiper-button-prev {
+    display: none;
+}
+
+/* Responsive adjustments for image */
 @media (min-width: 600px) {
     .banner-item img {
-        max-height: 300px !important; 
+        max-height: 450px; /* Increase max height for medium screens */
     }
 }
 
 @media (min-width: 900px) {
     .banner-item img {
-        max-height: 400px !important; 
+        max-height: 500px; /* Larger max height for big screens */
     }
 }
+
 @media (min-width: 1200px) {
     .banner-item img {
-        max-height: 450px !important; 
+        height: 1000px; /* Even larger for very big screens */
     }
 }
-
-
-
 /* Modal Styles */
 .modal {
     display: none; /* Hidden by default */

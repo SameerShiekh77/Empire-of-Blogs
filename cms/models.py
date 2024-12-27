@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
-# Create your models here.
+from django.utils.timezone import now
+from datetime import timedelta
+import uuid
 
 class Category(models.Model):
     name = models.CharField(max_length=100,unique=True)
@@ -115,3 +117,37 @@ class HomePageBanner(models.Model):
     
     class Meta:
         verbose_name = 'Home Page Banner'
+
+class StorePageBanner(models.Model):
+    banner_image = models.ImageField(upload_to='store-banner')
+    banner_name = models.CharField(max_length=200, null=True, blank=True)
+    banner_link = models.CharField(max_length=200)
+    is_active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.banner_name
+    
+    class Meta:
+        verbose_name = 'Store Page Banner'
+
+class AccessUrls(models.Model):
+    name_choice = (('store','store'),('category','category'), ('coupon','coupon'))
+    middle_url_choices = (('stores','stores'),('categories','categories'), ('coupons','coupons'))
+    name = models.CharField(max_length=200, choices=name_choice)
+    base_url = models.URLField(default="https://empireofblogs.net")
+    middle_url = models.CharField(max_length=100, choices=middle_url_choices)
+    unique_key = models.UUIDField(default=uuid.uuid4, unique=True)
+    full_url = models.URLField(blank=True, editable=False) 
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def regenerate_key(self):
+        self.unique_key = uuid.uuid4()
+        self.save()
+
+    def save(self, *args, **kwargs):
+        self.full_url = f"{self.base_url}/{self.middle_url}/{self.unique_key}"
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"Access_Url: {self.name}"

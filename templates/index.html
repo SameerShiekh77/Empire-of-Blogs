@@ -16,49 +16,52 @@
        {% endfor %}
    </div>
 </div>
+
+
+<!-- Blog Section Start -->
 <div class="blog-main">
    <div class="blog-1">
-      
-
       {% for blog in blogs %}
       <div class="blog-2">
          <div>
-            <a href="{% url "blog-detail" blog.slug %}" aria-label="blog">
-            <picture><img src="{{blog.image.url}}" class="c0148 tall" alt="{{blog.title}}"></picture>
+            <a href="{% url 'blog-detail' blog.slug %}" aria-label="blog">
+            <picture><img src="{{ blog.image.url }}" class="c0148 tall" alt="{{ blog.title }}"></picture>
             </a>
-
 
             <div class="c0169">
                <div class="blo-2">
                   <div class="nav-org2"></div>
-                     <a href="{% url "blog-detail" blog.slug %}" aria-label="blog-2">
-                        <div class="life title0">{{blog.blog_category}}</div>
-                     </a>
-                     <div class="dist-3"></div>
-                     <a aria-label="body2">
-                        <div class="c0167 body2 text-capitalize">By {{blog.author}}</div>
-                     </a>
-                  </div>
+                  <a href="{% url 'blog-detail' blog.slug %}" aria-label="blog-2">
+                     <div class="life title0">{{ blog.blog_category }}</div>
+                  </a>
+                  <div class="dist-3"></div>
+                  <a aria-label="body2">
+                     <div class="c0167 body2 text-capitalize">By {{ blog.author }}</div>
+                  </a>
                </div>
-            <a href="{% url "blog-detail" blog.slug %}" class="title-blo title5 text-capitalize">{{blog.title}}</a>
+            </div>
+            <a href="{% url 'blog-detail' blog.slug %}" class="title-blo title5 text-capitalize">{{ blog.title }}</a>
          </div>
       </div>
       {% endfor %}
    </div>
 </div>
 
+<!-- Home Advertisement Banner -->
 {% if home_ad %}
 <div class="col-md-12 banner-img">
    <div class="text-center">
-      <a href="{{home_ad.ad_link}}" aria-label="advertise" target="_blank">
-         <img src="{{home_ad.ad_image.url}}" class="img-responsive" alt="{{home_ad.ad_name}}">
-     </a>
- </div>
+      <a href="{{ home_ad.ad_link }}" aria-label="advertise" target="_blank">
+         <img src="{{ home_ad.ad_image.url }}" class="img-responsive" alt="{{ home_ad.ad_name }}">
+      </a>
+   </div>
 </div>
 {% endif %}
+
 </main>
 
-<div id="newsletterPopup" class="newsletter-popup">
+<!-- Newsletter Popup -->
+{% comment %} <div id="newsletterPopup" class="newsletter-popup" style="display: none;">
    <div class="popup-content">
      <span class="close-btn" onclick="closePopup()">&times;</span>
      
@@ -75,6 +78,6 @@
      </form>
      {% endif %}
    </div>
-</div>
- 
+</div> {% endcomment %}
+
 {% endblock body %}

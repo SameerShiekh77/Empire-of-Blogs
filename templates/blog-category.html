@@ -26,7 +26,7 @@
                                                     <div class="t-leftStoreInfo">
                                                         <div class="t-name">{{blog.title}} </div>
                                                         <div>
-                                                            <span class="t-description"></span>
+                                                            <span class="t-description">{{ blog.description_plain }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -45,26 +45,24 @@
                                     </h2>
 
                                     {% for featured_blog in featured_blogs %}
-                                    <div class="u-main">
-                                        <a href="{% url "blog-detail" featured_blog.slug %}" >
-                                            <div class="t-main-0-2-217">
-                                                <div class="t-couponContainer">
-                                                    <div>
-                                                        <span>
+                                        <div class="u-main">
+                                            <a href="{% url 'blog-detail' featured_blog.slug %}">
+                                                <div class="t-main-0-2-217">
+                                                    <div class="t-couponContainer">
+                                                        <!-- Image Section -->
+                                                        <div class="t-couponimg">
+                                                            <picture><img src="{{featured_blog.image.url}}" alt="{{featured_blog.title}}" class="t-loading t-load t-storeImg"></picture>
+                                                        </div>
+
+                                                        <!-- Text Section -->
+                                                        <div>
                                                             <div class="t-couponDesc">{{featured_blog.title}}</div>
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <div class="t-lastUsed-0-2-224">
-                                                            <div class="t-codeWorkedImg-0-2-226">
-                                                            </div>
-                                                            <div class="t-workedAlign-0-2-225">{{featured_blog.blog_category}}</div>
+                                                            <div class="t-lastUsed-0-2-224">{{featured_blog.blog_category}}</div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                            </a>
+                                        </div>
                                     {% endfor %}
                                   
                                 </div>
@@ -74,28 +72,27 @@
                                     <h2 class="t-title">Recent Blogs
                                     </h2>
                                     {% for recent_blog in recent_blogs %}
-                                    <div class="u-main">
                                         <a href="{% url "blog-detail" recent_blog.slug %}" >
-                                            <div class="t-main-0-2-217">
-                                                <div class="t-couponContainer">
-                                                    <div>
-                                                        <span>
-                                                            <div class="t-couponDesc">{{recent_blog.title}}</div>
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <div class="t-lastUsed-0-2-224">
-                                                            <div class="t-codeWorkedImg-0-2-226">
-                                                                    <div class="h-icon t-icon"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                            <div class="u-main">
+                                                <a href="{% url 'blog-detail' recent_blog.slug %}">
+                                                    <div class="t-main-0-2-217">
+                                                        <div class="t-couponContainer">
+                                                            <!-- Image Section -->
+                                                            <div class="t-couponimg">
+                                                                <picture><img src="{{recent_blog.image.url}}" alt="{{recent_blog.title}}" class="t-loading t-load t-storeImg"></picture>
                                                             </div>
-                                                            <div class="t-workedAlign-0-2-225">{{recent_blog.blog_category}}</div>
+    
+                                                            <!-- Text Section -->
+                                                            <div>
+                                                                <div class="t-couponDesc">{{recent_blog.title}}</div>
+                                                                <div class="t-lastUsed-0-2-224">{{recent_blog.blog_category}}</div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </div>
                                         </a>
-                                    </div>
-
+                                        
                                     {% endfor %}
 
                                    

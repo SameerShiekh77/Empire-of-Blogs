@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from blog.models import Blog, BlogCategory, Contact
-from .models import Store,Category, Coupon, HomePageAdPlacement, HomePageBanner
+from .models import Store,Category, Coupon, HomePageAdPlacement, HomePageBanner, StorePageBanner, AccessUrls
 from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 # Create your views here.
 def index(request):
     home_ad = HomePageAdPlacement.objects.filter(is_active=True,banner_placed_on='home_page').first()
@@ -69,30 +70,50 @@ def contact_form_submit(request):
         contact.save()
 
         return redirect('impressum')
-def stores(request, category_slug=None):
+
+def stores(request, unique_key=None, category_slug=None):
+    if unique_key:
+        try:
+            access_url = AccessUrls.objects.get(unique_key=unique_key, name="store")
+        except AccessUrls.DoesNotExist:
+            return HttpResponseRedirect('/')
+    else:
+        return HttpResponseRedirect('/')
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         stores = Store.objects.filter(categories=category)
     else:
         stores = Store.objects.all()
-    
+        banner = StorePageBanner.objects.filter(is_active=True)
+
     navigation = BlogCategory.objects.all()[:5]
     context = {
         'show_search_bar': True,
         'stores': stores,
+        'banners': banner,
         'navigation': navigation,
         'category': category if category_slug else None,
     }
     return render(request, 'stores.html', context)
-def show_categories(request):
+def show_categories(request, unique_key=None):
+    if unique_key:
+        try:
+            access_url = AccessUrls.objects.get(unique_key=unique_key, name="category")
+        except AccessUrls.DoesNotExist:
+            return HttpResponseRedirect('/')
+    else:
+        return HttpResponseRedirect('/')
     categories = Category.objects.all()
     navigation = BlogCategory.objects.all()[:5]
+    
     context = {
-        'categories':categories,
-        'navigation':navigation
+        'categories': categories,
+        'navigation': navigation
     }
-    print(categories)
-    return render(request,'categories.html',context)
+    
+    # print(categories)
+    
+    return render(request, 'categories.html', context)
 
 
 
@@ -116,20 +137,28 @@ def store_detail(request, slug):
         "stores":stores
     }
     return render(request, 'store_detail.html', context)
-def coupon_list(request):
-    coupons_ad = HomePageAdPlacement.objects.filter(is_active=True,banner_placed_on='coupon_page').first()
-    
+def coupon_list(request, unique_key=None):
+    # Validate the key if provided
+    if unique_key:
+        try:
+            access_url = AccessUrls.objects.get(unique_key=unique_key, name="coupon")
+        except AccessUrls.DoesNotExist:
+            return HttpResponseRedirect('/')
+    else:
+        return HttpResponseRedirect('/')
+    coupons_ad = HomePageAdPlacement.objects.filter(is_active=True, banner_placed_on='coupon_page').first()
     coupon = Coupon.objects.filter(featured=True).order_by('sort_order')
-    categoreis = Category.objects.filter(is_popluar=True)
+    categories = Category.objects.filter(is_popluar=True)
     navigation = BlogCategory.objects.all()[:5]
     
     context = {
         'show_search_bar': True,
         'coupons': coupon,
-        'navigation':navigation,
-        'categoreis': categoreis,
-        "coupons_ad":coupons_ad
+        'navigation': navigation,
+        'categories': categories,
+        "coupons_ad": coupons_ad
     }
+    
     return render(request, 'coupon.html', context)
 
 def search(request):
