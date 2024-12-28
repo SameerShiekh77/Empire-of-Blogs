@@ -485,3 +485,45 @@ document.addEventListener('click', (event) => {
     body.classList.remove('overlay-active');
   }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Ensure the first FAQ is open on page load
+    const firstFaq = document.querySelector('.faq-content.active');
+    if (firstFaq) {
+        const icon = firstFaq.previousElementSibling.querySelector('.toggle-icon');
+        icon.textContent = '−'; // Change icon to minus for the open state
+        firstFaq.previousElementSibling.setAttribute('aria-expanded', 'true');
+        firstFaq.setAttribute('aria-hidden', 'false');
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Ensure all FAQs are open on page load by setting `active` class and proper ARIA attributes
+    const allFaqs = document.querySelectorAll('.faq-content');
+    allFaqs.forEach(faq => {
+        faq.classList.add('active');
+        faq.previousElementSibling.querySelector('.toggle-icon').textContent = '−'; // Set icon to minus
+        faq.previousElementSibling.setAttribute('aria-expanded', 'true');
+        faq.setAttribute('aria-hidden', 'false');
+    });
+});
+
+function toggleFaq(id) {
+    const content = document.getElementById(id);
+    const header = content.previousElementSibling;
+    const icon = header.querySelector('.toggle-icon');
+    
+    // Toggle the current FAQ
+    if (content.classList.contains('active')) {
+        content.classList.remove('active');
+        icon.textContent = '+';
+        header.setAttribute('aria-expanded', 'false');
+        content.setAttribute('aria-hidden', 'true');
+    } else {
+        content.classList.add('active');
+        icon.textContent = '−';
+        header.setAttribute('aria-expanded', 'true');
+        content.setAttribute('aria-hidden', 'false');
+    }
+}
+
+

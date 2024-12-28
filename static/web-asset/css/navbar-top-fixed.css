@@ -330,3 +330,119 @@ body::before {
       height: 200px; /* You can adjust the height for smaller screens */
   }
 }
+.faq-section {
+  max-width: 800px;
+  margin-top: 10px;
+  padding: 0 15px; /* Added padding for responsiveness */
+  /* margin: 0 auto; */
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq-header {
+  padding: 20px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.faq-header:hover {
+  background-color: #f1f1f1;
+}
+
+.faq-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  flex: 1; /* Ensure the question text takes up the available space */
+}
+
+.toggle-icon {
+  font-size: 20px;
+  font-weight: bold;
+  color: #666;
+}
+
+.faq-content {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.faq-content p {
+  margin: 0;
+  padding: 9px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.faq-content.active {
+  max-height: 300px;
+  /* padding: 20px; */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .faq-section {
+    max-width: 100%;
+    padding: 0 10px; /* Adjust padding on smaller screens */
+  }
+
+  .section-title {
+    font-size: 24px; /* Reduce font size for smaller screens */
+    margin-bottom: 20px; /* Reduce margin for smaller screens */
+  }
+
+  .faq-header h3 {
+    font-size: 14px; /* Reduce font size for FAQ questions */
+  }
+
+  .toggle-icon {
+    font-size: 18px; /* Adjust toggle icon size */
+  }
+
+  .faq-item {
+    margin-bottom: 10px; /* Reduce space between items */
+  }
+
+  .faq-content.active {
+    max-height: 250px; /* Adjust max-height for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 20px;
+  }
+
+  .faq-header h3 {
+    font-size: 12px;
+  }
+
+  .toggle-icon {
+    font-size: 16px;
+  }
+
+  .faq-content.active {
+    max-height: 200px;
+  }
+}
+

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cms.models import Category, Store, Coupon, MetaTags, BodyMetaTags, Bannners,HomePageAdPlacement, HomePageBanner, StorePageBanner, AccessUrls
+from cms.models import Category, Store, Coupon, MetaTags, BodyMetaTags, Bannners,HomePageAdPlacement, HomePageBanner, StorePageBanner, AccessUrls, FAQ
 from import_export.admin import ImportExportModelAdmin, ExportActionModelAdmin
 from django.db.models import Max
 from import_export import resources
@@ -119,7 +119,11 @@ class StoreAccessAdmin(admin.ModelAdmin):
     regenerate_button.short_description = "Regenerate Key"
     regenerate_button.allow_tags = True
 
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ('question','answer','created_at')
+    search_fields = ('store',)
 
+admin.site.register(FAQ,FAQAdmin)
 admin.site.register(AccessUrls, StoreAccessAdmin)
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Store,StoreAdmin)

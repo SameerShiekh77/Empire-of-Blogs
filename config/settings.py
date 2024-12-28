@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'froala_editor',
     'blog',
     'django_browser_reload',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
