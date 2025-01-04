@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.utils.timezone import now
 from datetime import timedelta
+from froala_editor.fields import FroalaField
+from django.core.exceptions import ValidationError
 import uuid
 
 class Category(models.Model):
@@ -153,6 +155,7 @@ class AccessUrls(models.Model):
         return f"Access_Url: {self.name}"
 class FAQ(models.Model):
     store = models.ForeignKey('Store', on_delete=models.CASCADE, related_name='faqs')
+    short_text = FroalaField(null = True, blank = True)
     question = models.CharField(max_length=255)
     answer = models.TextField()
     order = models.IntegerField(default=0)

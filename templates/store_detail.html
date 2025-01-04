@@ -147,39 +147,34 @@
           </div>
         </div>
         {% endfor %}
-        <div class="container mt-5 mb-5">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="faq-section">
-                <h2 class="section-title mb-4">
-                  Frequently Asked Questions (FAQs)
-                </h2>
 
-                {% for faq in faqs %}
-                <div class="faq-item">
-                  <div
-                    class="faq-header"
-                    onclick="toggleFaq('faq-{{ faq.id }}')"
-                    aria-expanded="true"
-                    aria-controls="faq-{{ faq.id }}"
-                  >
-                    <h3>{{ faq.question }}</h3>
-                    <span class="toggle-icon" aria-hidden="true">−</span>
-                    <!-- Initially set to minus to indicate open -->
-                  </div>
-                  <div
-                    class="faq-content active"
-                    id="faq-{{ faq.id }}"
-                    aria-hidden="false"
-                  >
-                    <!-- Initially set to visible -->
-                    <p>{{ faq.answer|linebreaks }}</p>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
+        <!-- Short Text Section -->
+        {% if short_texts %}
+        <div class="short-text-section">
+          <p>{{ short_texts|safe }}</p>
+        </div>
+        {% endif %}
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+          {% if faqs %}
+          <h2 class="section-title">Frequently Asked Questions (FAQs)</h2>
+          {% for faq in faqs %}
+          <div class="faq-item">
+            <div
+              class="faq-header"
+              onclick="toggleFaq('faq-{{ faq.id }}')"
+              aria-expanded="false"
+              aria-controls="faq-{{ faq.id }}"
+            >
+              <h3>{{ faq.question }}</h3>
+              <span class="toggle-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="faq-content" id="faq-{{ faq.id }}" aria-hidden="true">
+              <p>{{ faq.answer|linebreaks }}</p>
             </div>
           </div>
+          {% endfor %} {% endif %}
         </div>
       </div>
     </div>

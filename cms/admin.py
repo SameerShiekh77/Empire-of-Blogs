@@ -1,4 +1,4 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from cms.models import Category, Store, Coupon, MetaTags, BodyMetaTags, Bannners,HomePageAdPlacement, HomePageBanner, StorePageBanner, AccessUrls, FAQ
 from import_export.admin import ImportExportModelAdmin, ExportActionModelAdmin
 from django.db.models import Max
@@ -122,7 +122,16 @@ class StoreAccessAdmin(admin.ModelAdmin):
 class FAQAdmin(admin.ModelAdmin):
     list_display = ('question','answer','created_at')
     search_fields = ('store',)
-
+    def save_model(self, request, obj, form, change):
+        if obj.short_text:
+            existing_faq = FAQ.objects.filter(store=obj.store, short_text__isnull=False).exclude(id=obj.id).first()
+            if existing_faq:
+                messages.error(
+                    request,
+                    f"Cannot save! This store already has an FAQ with a short_text in ID {existing_faq.id}."
+                )
+                return
+        super().save_model(request, obj, form, change)
 admin.site.register(FAQ,FAQAdmin)
 admin.site.register(AccessUrls, StoreAccessAdmin)
 admin.site.register(Category,CategoryAdmin)

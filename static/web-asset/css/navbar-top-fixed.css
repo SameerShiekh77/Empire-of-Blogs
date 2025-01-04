@@ -330,11 +330,24 @@ body::before {
       height: 200px; /* You can adjust the height for smaller screens */
   }
 }
+/* Short Text Section */
+.short-text-section {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  line-height: 1.6;
+  font-size: 16px;
+  color: #555;
+}
+
+/* FAQ Section */
 .faq-section {
   max-width: 800px;
-  margin-top: 10px;
-  padding: 0 15px; /* Added padding for responsiveness */
-  /* margin: 0 auto; */
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 .section-title {
@@ -370,7 +383,7 @@ body::before {
   font-size: 16px;
   font-weight: 500;
   color: #333;
-  flex: 1; /* Ensure the question text takes up the available space */
+  flex: 1;
 }
 
 .toggle-icon {
@@ -389,60 +402,34 @@ body::before {
 
 .faq-content p {
   margin: 0;
-  padding: 9px;
+  padding: 20px;
   line-height: 1.6;
   color: #666;
 }
 
 .faq-content.active {
   max-height: 300px;
-  /* padding: 20px; */
+  padding: 20px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .short-text-section,
   .faq-section {
-    max-width: 100%;
-    padding: 0 10px; /* Adjust padding on smaller screens */
+    padding: 10px;
   }
 
   .section-title {
-    font-size: 24px; /* Reduce font size for smaller screens */
-    margin-bottom: 20px; /* Reduce margin for smaller screens */
+    font-size: 24px;
   }
 
   .faq-header h3 {
-    font-size: 14px; /* Reduce font size for FAQ questions */
+    font-size: 14px;
   }
 
-  .toggle-icon {
-    font-size: 18px; /* Adjust toggle icon size */
-  }
-
-  .faq-item {
-    margin-bottom: 10px; /* Reduce space between items */
-  }
-
-  .faq-content.active {
-    max-height: 250px; /* Adjust max-height for mobile */
+  .faq-content p {
+    font-size: 14px;
   }
 }
 
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 20px;
-  }
-
-  .faq-header h3 {
-    font-size: 12px;
-  }
-
-  .toggle-icon {
-    font-size: 16px;
-  }
-
-  .faq-content.active {
-    max-height: 200px;
-  }
-}
 
