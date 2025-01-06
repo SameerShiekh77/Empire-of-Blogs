@@ -6,6 +6,7 @@ from import_export import resources
 from django.shortcuts import redirect
 from django.utils.html import format_html
 from django.urls import path
+from django.utils.translation import gettext_lazy as _
 # Register your models here.
 
 class CategoryAdmin(ImportExportModelAdmin, ExportActionModelAdmin,admin.ModelAdmin):
@@ -118,10 +119,27 @@ class StoreAccessAdmin(admin.ModelAdmin):
         )
     regenerate_button.short_description = "Regenerate Key"
     regenerate_button.allow_tags = True
+    
+class ShortTextFilter(admin.SimpleListFilter):
+    title = _('Short Text')
+    parameter_name = 'short_text'
 
+    def lookups(self, request, model_admin):
+        return (
+            ('has_short_text', _('Has Short Text')),
+            ('no_short_text', _('No Short Text')),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'has_short_text':
+            return queryset.filter(short_text__isnull=False).exclude(short_text__exact='')
+        elif self.value() == 'no_short_text':
+            return queryset.filter(short_text__isnull=True) | queryset.filter(short_text__exact='')
+        return queryset
 class FAQAdmin(admin.ModelAdmin):
-    list_display = ('question','answer','created_at')
+    list_display = ('id', 'store','question', 'is_active', 'created_at')
     search_fields = ('store',)
+    list_filter = ('store', ShortTextFilter)
     def save_model(self, request, obj, form, change):
         if obj.short_text:
             existing_faq = FAQ.objects.filter(store=obj.store, short_text__isnull=False).exclude(id=obj.id).first()

@@ -410,8 +410,7 @@ function subscribe() {
 function searchStores(query) {
     if (query.length > 1) {
         $.ajax({
-            url: 'http://127.0.0.1:8000/store/search/',
-            // url: 'https://empireofblogs.net/store/search/',
+            url: `${window.location.origin}/store/search/`,
             type: 'GET',
             data: { search: query },
             success: function(data) {

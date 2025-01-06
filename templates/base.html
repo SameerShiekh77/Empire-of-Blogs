@@ -45,8 +45,8 @@
           {% for nav in navigation %}
           <li><a href="{% url 'category' nav.slug %}">{{ nav.name }}</a></li>
           {% endfor %}
-          <li><a href="{% url 'stores' %}">Store</a></li>
-          <li><a href="{% url 'categories' %}">Categories</a></li>
+          {% comment %} <li><a href="{% url 'stores' %}">Store</a></li>
+          <li><a href="{% url 'categories' %}">Categories</a></li> {% endcomment %}
       </ul>
 
       <!-- Search Bar -->

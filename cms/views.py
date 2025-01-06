@@ -136,7 +136,7 @@ def store_detail(request, slug):
     coupons = Coupon.objects.filter(store=store)
     stores = Store.objects.all().order_by("?")[:12]
     navigation = BlogCategory.objects.all()[:5]
-    faqs = FAQ.objects.filter(is_active=True, store=store)
+    faqs = FAQ.objects.filter(is_active=True, store=store).order_by("order")
     short_texts = None
     for faq in faqs:
         short_texts = faq.short_text if faq.short_text else None
